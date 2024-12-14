@@ -15,7 +15,7 @@ export default async function Movies() {
 
   return (
     <div className="min-h-screen flex flex-col items-center">
-      <h1 className="text-center mt-20 text-4xl font-bold">Popular movies</h1>
+      <h1 className="text-center mt-10 text-4xl font-bold">Popular movies</h1>
       <div>
         <p className="text-center text-gray-600 mt-4">
           Here are some popular movies that you might like.
