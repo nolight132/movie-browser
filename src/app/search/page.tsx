@@ -1,69 +1,23 @@
-'use client'; // This makes the component a Client Component
+'use client';
 
 import React, { useState } from 'react';
-import MovieListItem from '../components/MovieListItem';
+import MovieList from '../components/ContentList';
+import SearchInput from '../components/SearchInput';
 
-const MovieSearchInput = ({
-  onSearch,
-}: {
-  onSearch: (query: string) => void;
-}) => {
-  const [query, setQuery] = useState('');
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onSearch(query);
-    setQuery(e.target.value);
-  };
-
-  return (
-    <div className="flex flex-col items-center mt-10">
-      <input
-        className="w-64 p-2 text-black rounded-md"
-        type="text"
-        value={query}
-        onChange={handleInputChange}
-        placeholder="Search for movies..."
-      />
-    </div>
-  );
-};
-
-const MovieList = ({ movies }: { movies: Movie[] }) => {
-  if (!movies.length)
-    return <p className="text-center mt-4">No movies found</p>;
-
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-10">
-      {movies.map((movie) => (
-        <MovieListItem key={movie.id} movie={movie} />
-      ))}
-    </div>
-  );
-};
+const res = await fetch('/api/movies/popular');
+const data = await res.json();
 
 const MoviePage = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setContent] = useState<Content[]>(data);
   const [query, setQuery] = useState<string>('');
 
-  const fetchMovies = async (query: string) => {
+  const fetchContent = async (query: string) => {
     if (!query) return;
 
     try {
       const res = await fetch(`/api/search?query=${query}`);
-
-      if (!res.ok) {
-        throw new Error('Failed to fetch data');
-      }
-
-      // Ensure the response has a body before parsing as JSON
       const data = await res.json();
-      if (!data || !Array.isArray(data)) {
-        // If the response is empty or not an array, log an error or handle it accordingly
-        console.error('Invalid response:', data);
-        return;
-      }
-
-      setMovies(data || []);
+      setContent(data || []);
     } catch (error) {
       console.error('Error fetching movies:', error);
     }
@@ -71,19 +25,20 @@ const MoviePage = () => {
 
   const handleSearch = (newQuery: string) => {
     setQuery(newQuery);
-    fetchMovies(newQuery);
+    fetchContent(newQuery);
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center">
-      <h1 className="text-center text-4xl font-bold mt-10">
-        Search for Movies
-      </h1>
-      <MovieSearchInput onSearch={handleSearch} />
-      <p className="text-center text-gray-600 mt-4">
-        Results for: &ldquo;{query}&ldquo;
-      </p>
-      <MovieList movies={movies} />
+      <div className="w-1/2">
+        <div>
+          <h1 className="text-4xl font-bold mt-10">
+            Search for: &ldquo;{query}&ldquo;
+          </h1>
+          <SearchInput onSearch={handleSearch} />
+        </div>
+        <MovieList content={movies} />
+      </div>
     </div>
   );
 };

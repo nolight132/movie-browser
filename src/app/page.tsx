@@ -1,6 +1,6 @@
-import MovieHomePageBanner from './components/MovieHomePageBanner';
+import HomePageBanner from './components/HomePageBanner';
 
-async function fetchRandomMovie(): Promise<Movie> {
+async function fetchRandomMovie(): Promise<Content> {
   const apiKey = process.env.TMDB_API_KEY;
 
   // Fetch popular movies data from TMDB API
@@ -27,7 +27,7 @@ export default async function Page() {
       <p className="text-center text-gray-600 mt-4">
         Here is a random movie that you might like.
       </p>
-      <MovieHomePageBanner movie={randomMovie} />
+      <HomePageBanner content={randomMovie} />
     </div>
   );
 }
