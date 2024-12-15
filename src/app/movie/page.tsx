@@ -1,5 +1,5 @@
-import React from "react";
-import MovieListItem from "../components/MovieListItem";
+import React from 'react';
+import MovieListItem from '../components/MovieListItem';
 
 async function fetchMovies(): Promise<Movie[]> {
   const apiKey = process.env.TMDB_API_KEY;

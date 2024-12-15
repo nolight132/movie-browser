@@ -1,18 +1,18 @@
-"use client"; // This makes the component a Client Component
+'use client'; // This makes the component a Client Component
 
-import React, { useState } from "react";
-import MovieListItem from "../components/MovieListItem";
+import React, { useState } from 'react';
+import MovieListItem from '../components/MovieListItem';
 
 const MovieSearchInput = ({
   onSearch,
 }: {
   onSearch: (query: string) => void;
 }) => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
     onSearch(query);
+    setQuery(e.target.value);
   };
 
   return (
@@ -43,7 +43,7 @@ const MovieList = ({ movies }: { movies: Movie[] }) => {
 
 const MoviePage = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [query, setQuery] = useState<string>("");
+  const [query, setQuery] = useState<string>('');
 
   const fetchMovies = async (query: string) => {
     if (!query) return;
@@ -52,20 +52,20 @@ const MoviePage = () => {
       const res = await fetch(`/api/search?query=${query}`);
 
       if (!res.ok) {
-        throw new Error("Failed to fetch data");
+        throw new Error('Failed to fetch data');
       }
 
       // Ensure the response has a body before parsing as JSON
       const data = await res.json();
       if (!data || !Array.isArray(data)) {
         // If the response is empty or not an array, log an error or handle it accordingly
-        console.error("Invalid response:", data);
+        console.error('Invalid response:', data);
         return;
       }
 
       setMovies(data || []);
     } catch (error) {
-      console.error("Error fetching movies:", error);
+      console.error('Error fetching movies:', error);
     }
   };
 

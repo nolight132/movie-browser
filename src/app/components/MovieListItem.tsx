@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function MovieListItem({ movie }: { movie: Movie }) {
   return (
@@ -11,7 +11,7 @@ export default function MovieListItem({ movie }: { movie: Movie }) {
         src={
           movie.poster_path
             ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-            : "/placeholder.jpg"
+            : '/placeholder.jpg'
         }
         alt={movie.title}
         width={500}

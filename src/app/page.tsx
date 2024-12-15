@@ -1,4 +1,4 @@
-import MovieHomePageBanner from "./components/MovieHomePageBanner";
+import MovieHomePageBanner from './components/MovieHomePageBanner';
 
 async function fetchRandomMovie(): Promise<Movie> {
   const apiKey = process.env.TMDB_API_KEY;

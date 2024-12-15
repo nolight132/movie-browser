@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 // Example function to fetch movies (adjust as needed)
 async function searchMovies(query: string) {
@@ -13,19 +13,19 @@ async function searchMovies(query: string) {
 // Handle GET requests
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const query = searchParams.get("query") || "";
+  const query = searchParams.get('query') || '';
 
   if (!query) {
-    return NextResponse.json({ error: "Query is required" }, { status: 400 });
+    return NextResponse.json({ error: 'Query is required' }, { status: 400 });
   }
 
   try {
     const movies = await searchMovies(query);
     return NextResponse.json(movies);
   } catch (error) {
-    console.error("Error fetching movies:", error);
+    console.error('Error fetching movies:', error);
     return NextResponse.json(
-      { error: "Error fetching movies" },
+      { error: 'Error fetching movies' },
       { status: 500 }
     );
   }
