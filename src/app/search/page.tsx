@@ -28,7 +28,7 @@ const MovieSearchInput = ({
   );
 };
 
-const MovieList = ({ movies }: { movies: any[] }) => {
+const MovieList = ({ movies }: { movies: Movie[] }) => {
   if (!movies.length)
     return <p className="text-center mt-4">No movies found</p>;
 
@@ -42,7 +42,7 @@ const MovieList = ({ movies }: { movies: any[] }) => {
 };
 
 const MoviePage = () => {
-  const [movies, setMovies] = useState<any[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [query, setQuery] = useState<string>("");
 
   const fetchMovies = async (query: string) => {
@@ -80,7 +80,9 @@ const MoviePage = () => {
         Search for Movies
       </h1>
       <MovieSearchInput onSearch={handleSearch} />
-      <p className="text-center text-gray-600 mt-4">Results for: "{query}"</p>
+      <p className="text-center text-gray-600 mt-4">
+        Results for: &ldquo;{query}&ldquo;
+      </p>
       <MovieList movies={movies} />
     </div>
   );
