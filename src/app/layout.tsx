@@ -14,6 +14,9 @@ export default function NavLayout({ children }: { children: React.ReactNode }) {
               <Link href="/movie">Movies</Link>
             </li>
             <li>
+              <Link href="/search">Search</Link>
+            </li>
+            <li>
               <Link href="/about">About</Link>
             </li>
           </ul>

@@ -11,10 +11,10 @@ export default function MovieListItem({ movie }: { movie: Movie }) {
         src={
           movie.poster_path
             ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-            : "/placeholder-image.jpg"
+            : "/placeholder.jpg"
         }
         alt={movie.title}
-        width={500} // You should specify width and height when using next/image
+        width={500}
         height={280}
       />
       <div className="mt-4">

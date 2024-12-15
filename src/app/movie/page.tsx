@@ -9,7 +9,6 @@ async function fetchMovies(): Promise<Movie[]> {
   const data = await res.json();
   return data.results;
 }
-
 export default async function Movies() {
   const movies = await fetchMovies();
 
