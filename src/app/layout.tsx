@@ -1,5 +1,6 @@
 import './globals.css';
 import Link from 'next/link';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export default function NavLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -28,6 +29,7 @@ export default function NavLayout({ children }: { children: React.ReactNode }) {
           </ul>
         </nav>
         <main>{children}</main>
+        <SpeedInsights />
       </body>
     </html>
   );
