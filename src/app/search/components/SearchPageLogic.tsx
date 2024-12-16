@@ -28,7 +28,7 @@ const SearchPageLogic = () => {
       const data = await res.json();
       setContent(data || []);
     } catch (error) {
-      console.error('Error fetching movies:', error);
+      console.error('Error fetching content:', error);
     }
   };
 

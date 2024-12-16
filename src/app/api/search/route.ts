@@ -1,4 +1,4 @@
-import { getPopularMovies, searchMovies } from '@/app/lib/tmdb';
+import { getPopularMovies, searchMulti } from '@/app/lib/tmdb';
 import { NextRequest, NextResponse } from 'next/server';
 
 // Handle GET requests
@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(data);
   }
   try {
-    const content = (await searchMovies(query)).results;
+    const content = (await searchMulti(query)).results;
     return NextResponse.json(content);
   } catch (error) {
     console.error('Error fetching movies:', error);
