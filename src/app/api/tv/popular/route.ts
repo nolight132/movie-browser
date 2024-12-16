@@ -1,13 +1,13 @@
 import { NextResponse } from 'next/server';
 
-async function fetchRandom(): Promise<Content[]> {
+async function fetchShows(): Promise<Content[]> {
   const apiKey = process.env.TMDB_API_KEY;
   if (!apiKey) {
     throw new Error('TMDB_API_KEY is not defined');
   }
-  const type = Math.round(Math.random()) ? 'movie' : 'tv';
+
   const res = await fetch(
-    `https://api.themoviedb.org/3/${type}/popular?api_key=${apiKey}`
+    `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`
   );
 
   if (!res.ok) {
@@ -21,12 +21,12 @@ async function fetchRandom(): Promise<Content[]> {
 // Handle GET requests
 export async function GET() {
   try {
-    const content = await fetchRandom();
-    return NextResponse.json(content);
+    const tvShows = await fetchShows();
+    return NextResponse.json(tvShows);
   } catch (error) {
-    console.error('Error fetching movies:', error);
+    console.error('Error fetching tv shows:', error);
     return NextResponse.json(
-      { error: 'Error fetching movies' },
+      { error: 'Error fetching tv shows' },
       { status: 500 }
     );
   }

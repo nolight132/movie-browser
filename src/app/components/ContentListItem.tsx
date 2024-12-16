@@ -1,22 +1,28 @@
 import Image from 'next/image';
 
 export default function ContentListItem({ content }: { content: Content }) {
-  console.log(content);
-  const title = content.title ? content.title : content.name;
+  const title = content.title
+    ? content.title
+    : content.name
+    ? content.name
+    : '';
   const release_date = content.release_date
     ? content.release_date
-    : content.first_air_date;
+    : content.first_air_date
+    ? content.first_air_date
+    : '    ';
   const release_year = (): string => {
     try {
       return release_date.substring(0, 4);
-    } catch (error) {
+    } catch (err) {
+      console.error(err);
       return '';
     }
   };
   return (
     <div
       key={content.id}
-      className="max-w-xs rounded-lg overflow-hidden shadow-lg bg-white p-4 m-4"
+      className="max-w-xs rounded-lg overflow-hidden shadow-lg bg-white p-4 m-4 hover:scale-105 transition-transform"
     >
       <Image
         className="w-full h-750 object-cover rounded-md"

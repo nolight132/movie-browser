@@ -6,9 +6,11 @@ export default function ContentList({ content }: { content: Content[] }) {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-10">
-      {content.map((content) => (
-        <MovieListItem key={content.id} content={content} />
-      ))}
+      {content.map((content) =>
+        content.release_date || content.first_air_date ? (
+          <MovieListItem key={content.id} content={content} />
+        ) : null
+      )}
     </div>
   );
 }
