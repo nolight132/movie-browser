@@ -4,6 +4,9 @@ import Link from 'next/link';
 export default function NavLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <title>Movie Browser</title>
+      </head>
       <body>
         <nav className="p-4">
           <ul className="flex space-x-6 justify-center text-lg">
@@ -11,7 +14,7 @@ export default function NavLayout({ children }: { children: React.ReactNode }) {
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/movie">Movies</Link>
+              <Link href="/movies">Movies</Link>
             </li>
             <li>
               <Link href="/tv-show">TV Shows</Link>

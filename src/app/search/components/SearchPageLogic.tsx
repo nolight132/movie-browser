@@ -2,14 +2,11 @@
 
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
-import ListLoading from './ListLoading';
+import ListLoading from '../../components/ListLoading';
 import SearchInput from './SearchInput';
-const ContentList = dynamic(() => import('./ContentList'), {
+const ContentList = dynamic(() => import('../../components/ContentList'), {
   loading: () => <ListLoading />,
 });
-
-// const res = await fetch('/api/movies/popular');
-// const data = await res.json();
 
 const SearchPageLogic = () => {
   const [content, setContent] = useState<Content[]>([]);

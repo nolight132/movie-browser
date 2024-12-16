@@ -1,6 +1,6 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-const SearchPageLogic = dynamic(() => import('../components/SearchPageLogic'));
+const SearchPageLogic = dynamic(() => import('./components/SearchPageLogic'));
 
 const SearchPage = () => {
   return (
