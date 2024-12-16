@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const query = searchParams.get('query');
   if (!query) {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    const baseUrl = process.env.BASE_URL;
     const res = await fetch(`${baseUrl}/api/movies/popular`);
     if (!res.ok) {
       throw new Error(`Failed to fetch popular movies: ${res.statusText}`);
