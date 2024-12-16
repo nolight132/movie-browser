@@ -36,7 +36,9 @@ export default function ContentListItem({ content }: { content: Content }) {
         height={280}
       />
       <div className="mt-4">
-        <h2 className="text-xl font-semibold text-gray-800">{title}</h2>
+        <h2 className="text-xl font-semibold text-gray-800 truncate">
+          {title}
+        </h2>
         <p className="text-gray-600 text-sm">({release_year()})</p>
         <p className="text-gray-600 mt-2 text-sm truncate">
           {content.overview}

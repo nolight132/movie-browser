@@ -14,7 +14,7 @@ export default function HomePageBanner({ content }: { content: Content }) {
             : '/placeholder-image.jpg'
         }
         alt={content.title}
-        width={500} // You should specify width and height when using next/image
+        width={500}
         height={280}
       />
       <div className="mt-4">

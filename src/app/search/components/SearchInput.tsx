@@ -4,8 +4,9 @@ const SearchInput = ({ onSearch }: { onSearch: (query: string) => void }) => {
   const [query, setQuery] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onSearch(query);
-    setQuery(e.target.value);
+    const newQuery = e.target.value;
+    setQuery(newQuery);
+    onSearch(newQuery);
   };
 
   return (
