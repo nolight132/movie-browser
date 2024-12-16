@@ -1,4 +1,4 @@
-import { getPopularMovies, getTopRatedMovies } from '@/app/lib/tmdb';
+import { getTopRatedMovies } from '@/app/lib/tmdb';
 import { NextResponse } from 'next/server';
 
 // Handle GET requests
