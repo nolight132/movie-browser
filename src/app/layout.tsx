@@ -1,5 +1,6 @@
 import './globals.css';
 import Link from 'next/link';
+import Image from 'next/image';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export default function NavLayout({ children }: { children: React.ReactNode }) {
@@ -31,7 +32,7 @@ export default function NavLayout({ children }: { children: React.ReactNode }) {
         <main>{children}</main>
         <footer className="text-white p-4 mt-10 text-center">
           <div className="flex justify-center items-center space-x-2">
-            <img src="tmdb-logo.svg" alt="TMDb Logo" className="w-16" />
+            <Image src="tmdb-logo.svg" alt="TMDb Logo" width={64} height={8} />
             <p>
               This product uses the TMDB API but is not endorsed or certified by
               TMDB
