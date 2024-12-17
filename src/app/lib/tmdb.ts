@@ -67,3 +67,14 @@ export const getTopRatedMovies = async (page = 1) => {
   }
   return response.json();
 };
+
+export const getTopRatedTvShows = async (page = 1) => {
+  const response = await fetch(
+    `${BASE_URL}/tv/top_rated?page=${page}&api_key=${TMDB_API_KEY}`
+  );
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.status_message || 'Failed to search');
+  }
+  return response.json();
+};
