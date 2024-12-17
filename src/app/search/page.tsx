@@ -4,8 +4,8 @@ const SearchPageLogic = dynamic(() => import('./components/SearchPageLogic'));
 
 const SearchPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center">
-      <div className="w-1/2">
+    <div className="min-h-screen flex flex-col items-center content-center">
+      <div className="w-8/12">
         <SearchPageLogic />
       </div>
     </div>

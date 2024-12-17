@@ -22,7 +22,7 @@ export default function ContentListItem({ content }: { content: Content }) {
   return (
     <div
       key={content.id}
-      className="max-w-xs rounded-lg overflow-hidden shadow-lg bg-white p-4 m-4 hover:scale-105 transition-transform"
+      className="w-60 rounded-lg overflow-hidden shadow-lg bg-white p-4 m-4 hover:scale-105 transition-transform"
     >
       <Image
         className="w-full h-750 object-cover rounded-md"
