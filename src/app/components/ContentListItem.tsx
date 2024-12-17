@@ -8,19 +8,19 @@ export default function ContentListItem({ content }: { content: Content }) {
     : content.name
     ? content.name
     : '';
-  const release_date = content.release_date
-    ? content.release_date
-    : content.first_air_date
-    ? content.first_air_date
-    : '    ';
-  const release_year = (): string => {
-    try {
-      return release_date.substring(0, 4);
-    } catch (err) {
-      console.error(err);
-      return '';
-    }
-  };
+  // const release_date = content.release_date
+  //   ? content.release_date
+  //   : content.first_air_date
+  //   ? content.first_air_date
+  //   : '    ';
+  // const release_year = (): string => {
+  //   try {
+  //     return release_date.substring(0, 4);
+  //   } catch (err) {
+  //     console.error(err);
+  //     return '';
+  //   }
+  // };
   return (
     <div
       key={content.id}
