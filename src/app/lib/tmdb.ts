@@ -78,3 +78,25 @@ export const getTopRatedTvShows = async (page = 1) => {
   }
   return response.json();
 };
+
+export const getMovie = async (id: string) => {
+  const response = await fetch(
+    `${BASE_URL}/movie/${id}?api_key=${TMDB_API_KEY}&include_adult=false`
+  );
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.status_message || 'Failed to search');
+  }
+  return response.json();
+};
+
+export const getTvShow = async (id: string) => {
+  const response = await fetch(
+    `${BASE_URL}/tv/${id}?api_key=${TMDB_API_KEY}&include_adult=false`
+  );
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.status_message || 'Failed to search');
+  }
+  return response.json();
+};

@@ -1,29 +1,15 @@
 import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ContentListItem({ content }: { content: Content }) {
-  const title = content.title
-    ? content.title
-    : content.name
-    ? content.name
-    : '';
-  // const release_date = content.release_date
-  //   ? content.release_date
-  //   : content.first_air_date
-  //   ? content.first_air_date
-  //   : '    ';
-  // const release_year = (): string => {
-  //   try {
-  //     return release_date.substring(0, 4);
-  //   } catch (err) {
-  //     console.error(err);
-  //     return '';
-  //   }
-  // };
+  const isMovie: boolean = content.title ? true : false;
+  const title = isMovie ? content.title : content.name;
   return (
-    <div
+    <Link
       key={content.id}
+      href={isMovie ? `/movies/${content.id}` : `/tv/${content.id}`}
       className="w-60 rounded-lg overflow-hidden bg-white m-3 hover:scale-105 hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.3)] transition-all"
     >
       <Image
@@ -59,6 +45,6 @@ export default function ContentListItem({ content }: { content: Content }) {
           {content.overview}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
