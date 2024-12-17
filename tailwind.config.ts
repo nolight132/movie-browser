@@ -12,6 +12,9 @@ export default {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
       },
+      aspectRatio: {
+        '3/2': '3 / 2',
+      },
     },
   },
   plugins: [],
