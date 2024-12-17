@@ -13,7 +13,7 @@ const SearchPageLogic = () => {
   const [query, setQuery] = useState<string>('');
 
   const setInitialContent = async () => {
-    const res = await fetch(`/api/movies/popular`);
+    const res = await fetch(`/api/tv/top-rated`);
     const data = await res.json();
     setContent(data || []);
   };
