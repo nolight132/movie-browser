@@ -1,31 +1,32 @@
+'use client';
+
 import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 
+const EpisodePills = dynamic(() => import('./EpisodePills'), {
+  loading: () => (
+    <div className="absolute top-2 left-2 flex bg-gray-500/80 rounded-full">
+      <div className="p-2 h-6 rounded-full shadow-lg text-xs flex gap-2 items-center justify-center text-white font-semibold">
+        <div>? Seasons</div>
+        <div className="h-3 border-l border-gray-400"></div>
+        <div>? Episodes</div>
+      </div>
+    </div>
+  ),
+  ssr: false,
+});
+
 export default function ContentListItem({ content }: { content: Content }) {
-  const isMovie: boolean = content.title ? true : false;
+  const isMovie: boolean = !!content.title;
   const title = isMovie ? content.title : content.name;
   const overview = content.overview
     ? content.overview
     : `This ${
         isMovie ? 'movie' : 'show'
       } has no overview. However, it is still worth watching!`;
-
-  const episodePill = () => {
-    if (isMovie) {
-      return null;
-    }
-
-    return (
-      <div className="absolute top-2 left-2 flex gap-2 bg-gray-500/60 rounded-full">
-        <div className="p-2 h-6 rounded-full shadow-lg text-xs flex items-center justify-center text-white font-semibold">
-          {content.number_of_seasons}{' '}
-          {content.number_of_seasons === 1 ? 'Season' : 'Seasons'}
-        </div>
-      </div>
-    );
-  };
 
   return (
     <Link
@@ -34,7 +35,7 @@ export default function ContentListItem({ content }: { content: Content }) {
       className="w-60 rounded-lg overflow-hidden bg-white m-3 hover:scale-105 hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.3)] transition-all"
     >
       <div className="w-full h-80 relative">
-        {episodePill()}
+        <EpisodePills isMovie={isMovie} content={content} />
         <Image
           className="w-full h-full object-cover pointer-events-none select-none"
           src={

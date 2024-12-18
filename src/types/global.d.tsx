@@ -49,6 +49,10 @@ declare global {
       poster_path: string | null;
     }[]; // For TV shows
   }
+  type Props = {
+    params: Promise<{ id?: string }>;
+    searchParams: Promise<{ query?: string }>;
+  };
 }
 
 export {};
