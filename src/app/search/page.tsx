@@ -1,15 +1,23 @@
-import React from 'react';
-import dynamic from 'next/dynamic';
-const SearchPageLogic = dynamic(() => import('./components/SearchPageLogic'));
+import { getTopRatedTvShows, searchMulti } from '@/app/lib/tmdb';
+import SearchInput from './components/SearchInput';
+import ContentList from '@/app/components/ContentList';
 
-const SearchPage = () => {
+export default async function SearchPage({ searchParams }: Props) {
+  const sParams = await searchParams;
+  const query = sParams.query || '';
+  const content = query
+    ? (await searchMulti(query)).results
+    : (await getTopRatedTvShows()).results;
+
   return (
     <div className="min-h-screen flex flex-col items-center content-center">
       <div className="w-8/12">
-        <SearchPageLogic />
+        <h1 className="text-4xl font-bold mt-10">
+          {query ? `Search results for: “${query}”` : 'Search for something!'}
+        </h1>
+        <SearchInput query={query ? query : ''} />
+        <ContentList content={content} />
       </div>
     </div>
   );
-};
-
-export default SearchPage;
+}

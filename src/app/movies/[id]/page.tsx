@@ -1,15 +1,9 @@
-import { getMovie } from '@/app/lib/tmdb';
+import { getMovieDetails } from '@/app/lib/tmdb';
 import Image from 'next/image';
 
-type Props = {
-  params: Promise<{ id: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
 const MoviePage = async ({ params }: Props) => {
-  const id = (await params).id;
-  console.log(id);
-  const movie: Content = await getMovie(id);
+  const id = (await params).id!;
+  const movie: Content = await getMovieDetails(parseInt(id));
 
   return (
     <div className="min-h-screen w-full flex justify-center">
@@ -27,7 +21,7 @@ const MoviePage = async ({ params }: Props) => {
                 ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
                 : '/placeholder.jpg'
             }
-            alt={movie.title}
+            alt={movie.title!}
             width={500}
             height={280}
           />

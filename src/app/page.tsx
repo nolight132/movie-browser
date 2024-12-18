@@ -1,5 +1,3 @@
-// import HomePageBanner from './components/HomePageBanner';
-
 export default async function Page() {
   return (
     <div className="min-h-screen flex flex-col items-center">
