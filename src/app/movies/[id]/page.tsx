@@ -1,8 +1,13 @@
 import { getMovie } from '@/app/lib/tmdb';
 import Image from 'next/image';
 
-const MoviePage = async ({ params }: { params: { id: string } }) => {
-  const { id } = await params;
+type Props = {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+const MoviePage = async ({ params }: Props) => {
+  const id = (await params).id;
   console.log(id);
   const movie: Content = await getMovie(id);
 
