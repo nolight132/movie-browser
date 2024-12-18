@@ -1,5 +1,11 @@
 import React from 'react';
-import Shows from './components/Shows';
+import dynamic from 'next/dynamic';
+import ListLoading from '../components/ListLoading';
+
+const Shows = dynamic(() => import('./components/Shows'), {
+  loading: () => <ListLoading />,
+  ssr: true,
+});
 
 export default function ShowsPage() {
   return (

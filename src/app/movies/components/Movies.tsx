@@ -8,7 +8,7 @@ const ContentList = dynamic(() => import('../../components/ContentList'), {
 });
 
 export default async function Movies() {
-  const content = (await getPopularMovies()).results;
+  const content: Content[] = (await getPopularMovies()).results;
 
   return <ContentList content={content} />;
 }
