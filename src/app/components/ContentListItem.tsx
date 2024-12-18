@@ -13,7 +13,7 @@ export default function ContentListItem({ content }: { content: Content }) {
       className="w-60 rounded-lg overflow-hidden bg-white m-3 hover:scale-105 hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.3)] transition-all"
     >
       <Image
-        className="w-full w-60 h-80 object-cover"
+        className="w-full w-60 h-80 object-cover pointer-events-none select-none"
         src={
           content.poster_path
             ? `https://image.tmdb.org/t/p/w500/${content.poster_path}`
