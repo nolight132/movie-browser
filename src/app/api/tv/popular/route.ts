@@ -4,8 +4,8 @@ import { NextResponse } from 'next/server';
 // Handle GET requests
 export async function GET() {
   try {
-    const movies = (await getPopularTvShows()).results;
-    return NextResponse.json(movies);
+    const shows = (await getPopularTvShows()).results;
+    return NextResponse.json(shows);
   } catch (error) {
     console.error('Error fetching movies:', error);
     return NextResponse.json(

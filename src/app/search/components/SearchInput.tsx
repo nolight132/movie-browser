@@ -17,6 +17,7 @@ const SearchInput = ({ onSearch }: { onSearch: (query: string) => void }) => {
         value={query}
         onChange={handleInputChange}
         placeholder="Search for movies..."
+        id="search-input"
       />
     </div>
   );
