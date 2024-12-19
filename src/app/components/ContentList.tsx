@@ -1,12 +1,12 @@
 import dynamic from 'next/dynamic';
+import ContentListItemSkeleton from './ContentListItemSkeleton';
 
 const ContentListItem = dynamic(() => import('./ContentListItem'), {
-  loading: () => <div className="text-center mt-4">Loading...</div>,
+  loading: () => <ContentListItemSkeleton />,
 });
 
 export default function ContentList({ content }: { content: Content[] }) {
   if (!content.length) {
-    console.log('No content available');
     return <p className="text-center mt-4">No content found</p>;
   }
   return (

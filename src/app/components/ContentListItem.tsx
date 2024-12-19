@@ -7,9 +7,9 @@ import Link from 'next/link';
 const EpisodePillSkeleton = () => (
   <div className="absolute top-2 left-2 flex bg-gray-500/80 rounded-full">
     <div className="p-2 h-6 rounded-full shadow-lg text-xs flex gap-2 items-center justify-center text-white font-semibold">
-      <div className="w-20 bg-gray-300 animate-pulse h-3"></div>
+      <div className="w-12 bg-gray-300 animate-pulse h-3 rounded"></div>
       <div className="h-3 border-l border-gray-400"></div>
-      <div className="w-20 bg-gray-300 animate-pulse h-3"></div>
+      <div className="w-12 bg-gray-300 animate-pulse h-3 rounded"></div>
     </div>
   </div>
 );
@@ -29,7 +29,6 @@ export default function ContentListItem({ content }: { content: Content }) {
 
   return (
     <Link
-      key={content.id}
       href={isMovie ? `/movies/${content.id}` : `/tv/${content.id}`}
       className="w-60 rounded-lg overflow-hidden bg-white m-3 hover:scale-105 hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.3)] transition-all"
     >

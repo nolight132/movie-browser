@@ -8,7 +8,7 @@ const ContentList = dynamic(() => import('../../components/ContentList'), {
 });
 
 export default async function Shows() {
-  const content = (await getPopularTvShows()).results;
+  const content = (await getPopularTvShows(1)).results;
 
   return <ContentList content={content} />;
 }

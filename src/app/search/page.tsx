@@ -6,8 +6,8 @@ export default async function SearchPage({ searchParams }: Props) {
   const sParams = await searchParams;
   const query = sParams.query || '';
   const content = query
-    ? (await searchMulti(query)).results
-    : (await getTopRatedTvShows()).results;
+    ? (await searchMulti(query, 1)).results
+    : (await getTopRatedTvShows(1)).results;
 
   return (
     <div className="min-h-screen flex flex-col items-center content-center">

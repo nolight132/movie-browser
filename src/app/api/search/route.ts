@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
     );
   }
   try {
-    const content = (await searchMulti(query)).results;
+    const content = (await searchMulti(query, 1)).results;
     return NextResponse.json(content);
   } catch (error) {
     console.error('Error fetching movies:', error);
