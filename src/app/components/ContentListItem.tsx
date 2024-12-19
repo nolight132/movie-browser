@@ -1,22 +1,21 @@
-'use client';
-
 import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const EpisodePills = dynamic(() => import('./EpisodePills'), {
-  loading: () => (
-    <div className="absolute top-2 left-2 flex bg-gray-500/80 rounded-full">
-      <div className="p-2 h-6 rounded-full shadow-lg text-xs flex gap-2 items-center justify-center text-white font-semibold">
-        <div>? Seasons</div>
-        <div className="h-3 border-l border-gray-400"></div>
-        <div>? Episodes</div>
-      </div>
+const EpisodePillSkeleton = () => (
+  <div className="absolute top-2 left-2 flex bg-gray-500/80 rounded-full">
+    <div className="p-2 h-6 rounded-full shadow-lg text-xs flex gap-2 items-center justify-center text-white font-semibold">
+      <div className="w-20 bg-gray-300 animate-pulse h-3"></div>
+      <div className="h-3 border-l border-gray-400"></div>
+      <div className="w-20 bg-gray-300 animate-pulse h-3"></div>
     </div>
-  ),
-  ssr: false,
+  </div>
+);
+
+const EpisodePill = dynamic(() => import('./EpisodePill'), {
+  loading: () => <EpisodePillSkeleton />,
 });
 
 export default function ContentListItem({ content }: { content: Content }) {
@@ -35,7 +34,7 @@ export default function ContentListItem({ content }: { content: Content }) {
       className="w-60 rounded-lg overflow-hidden bg-white m-3 hover:scale-105 hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.3)] transition-all"
     >
       <div className="w-full h-80 relative">
-        <EpisodePills isMovie={isMovie} content={content} />
+        {!isMovie && <EpisodePill content={content} />}
         <Image
           className="w-full h-full object-cover pointer-events-none select-none"
           src={

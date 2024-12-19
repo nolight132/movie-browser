@@ -1,4 +1,8 @@
-import ContentListItem from './ContentListItem';
+import dynamic from 'next/dynamic';
+
+const ContentListItem = dynamic(() => import('./ContentListItem'), {
+  loading: () => <div className="text-center mt-4">Loading...</div>,
+});
 
 export default function ContentList({ content }: { content: Content[] }) {
   if (!content.length) {
