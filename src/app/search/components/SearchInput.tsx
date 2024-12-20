@@ -10,12 +10,12 @@ const SearchInput = ({ query }: { query: string }) => {
   useEffect(() => {
     if (input) {
       router.push(`/search?query=${encodeURIComponent(input)}`);
+    } else {
+      router.push('/search');
     }
   }, [input, router]);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
-    e.preventDefault();
   };
 
   return (

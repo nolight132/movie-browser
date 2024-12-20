@@ -7,7 +7,7 @@ export default function ContentListItem() {
   return (
     <Link
       href="#"
-      className="w-60 rounded-lg overflow-hidden bg-white m-3 hover:scale-105 hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.3)] transition-all"
+      className="w-60 rounded-lg overflow-hidden bg-white m-3 lg:hover:scale-105 lg:hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.3)] transition-all"
     >
       <div className="w-full h-80 relative">
         <Image
