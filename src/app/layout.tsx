@@ -5,6 +5,9 @@ import Image from 'next/image';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter } from 'next/font/google';
 import Navbar from './components/Navbar';
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+config.autoAddCss = false;
 
 const inter = Inter({
   subsets: ['latin'],

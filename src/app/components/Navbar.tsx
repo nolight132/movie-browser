@@ -2,7 +2,12 @@
 
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass';
+import {
+  faMagnifyingGlass,
+  faFilm,
+  faTv,
+  faInfo,
+} from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -19,7 +24,9 @@ const Navbar = () => {
       } z-50 p-4 bg-black bg-opacity-50 backdrop-blur-md text-white`}
     >
       <div className="flex items-center justify-between">
-        <div className="text-xl font-bold">Movie Browser</div>
+        <Link href="/" className="text-xl font-bold">
+          Movie Browser
+        </Link>
         <button
           className="lg:hidden block p-2"
           onClick={toggleMenu}
@@ -49,16 +56,21 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/movies">
+              <FontAwesomeIcon icon={faFilm} className="mr-2" />
+              Movies
+            </Link>
           </li>
           <li>
-            <Link href="/movies">Movies</Link>
+            <Link href="/tv">
+              <FontAwesomeIcon icon={faTv} className="mr-2" />
+              Shows
+            </Link>
           </li>
           <li>
-            <Link href="/tv">TV Shows</Link>
-          </li>
-          <li>
-            <Link href="/about">About</Link>
+            <Link href="/about">
+              <FontAwesomeIcon icon={faInfo} />
+            </Link>
           </li>
         </ul>
       </div>
@@ -68,19 +80,28 @@ const Navbar = () => {
         }`}
       >
         <li>
-          <Link href="/search">Search</Link>
+          <Link onClick={toggleMenu} href="/search">
+            <FontAwesomeIcon icon={faMagnifyingGlass} className="mr-2" />
+            Search
+          </Link>
         </li>
         <li>
-          <Link href="/">Home</Link>
+          <Link onClick={toggleMenu} href="/movies">
+            <FontAwesomeIcon icon={faFilm} className="mr-2" />
+            Movies
+          </Link>
         </li>
         <li>
-          <Link href="/movies">Movies</Link>
+          <Link onClick={toggleMenu} href="/tv">
+            <FontAwesomeIcon icon={faTv} className="mr-2" />
+            Shows
+          </Link>
         </li>
         <li>
-          <Link href="/tv">TV Shows</Link>
-        </li>
-        <li>
-          <Link href="/about">About</Link>
+          <Link onClick={toggleMenu} href="/about">
+            <FontAwesomeIcon icon={faInfo} className="mr-2" />
+            About
+          </Link>
         </li>
       </ul>
     </nav>
