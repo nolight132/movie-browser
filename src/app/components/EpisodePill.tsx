@@ -1,17 +1,16 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import EpisodePillSkeleton from './EpisodePillSkeleton';
 
 export default function EpisodePill({ content }: { content: Content }) {
   const [seasons, setSeasons] = useState<number | null>(null);
   const [episodes, setEpisodes] = useState<number | null>(null);
 
   useEffect(() => {
-    // Check if the details are already cached in localStorage
     const cachedData = localStorage.getItem(`tv-show-${content.id}`);
 
     if (cachedData) {
-      // Parse the cached data and set it
       const data = JSON.parse(cachedData);
       setSeasons(data.number_of_seasons);
       setEpisodes(data.number_of_episodes);
@@ -23,10 +22,7 @@ export default function EpisodePill({ content }: { content: Content }) {
           return;
         }
         const data = await res.json();
-
-        // Store the fetched data in localStorage
         localStorage.setItem(`tv-show-${content.id}`, JSON.stringify(data));
-
         setSeasons(data.number_of_seasons);
         setEpisodes(data.number_of_episodes);
       };
@@ -35,8 +31,8 @@ export default function EpisodePill({ content }: { content: Content }) {
     }
   }, [content.id]);
 
-  if (seasons === null || episodes === null) {
-    return null;
+  if (!seasons || !episodes) {
+    return <EpisodePillSkeleton />;
   }
 
   return (
