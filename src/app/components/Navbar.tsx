@@ -68,7 +68,7 @@ const LinkListMobile = ({
 }) => {
   return (
     <ul
-      className={`lg:hidden absolute h-screen w-screen p-6 text-5xl mt-32 font-bold space-y-2 left-0 flex-col justify-center items-space-around text-white text-opacity-80 transition-all ease-in-out duration-300 ${
+      className={`lg:hidden absolute h-screen w-screen p-6 top-0 text-5xl font-bold space-y-8 left-0 flex flex-col justify-center text-white text-opacity-80 transition-all ease-in-out duration-300 ${
         isMenuOpen
           ? 'opacity-100 translate-y-0'
           : 'opacity-0 translate-y-4 pointer-events-none'
