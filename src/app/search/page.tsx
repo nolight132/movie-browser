@@ -1,6 +1,6 @@
 import { getTopRatedTvShows, searchMulti } from '@/app/lib/tmdb';
 import SearchInput from './components/SearchInput';
-import ContentList from '@/app/components/ContentList';
+import ContentList from '@/app/components/ContentList/ContentList';
 import PageWrapper from '../components/PageWrapper';
 
 let content: Content[] = [];

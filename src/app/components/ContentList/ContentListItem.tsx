@@ -1,5 +1,3 @@
-'use client';
-
 import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import dynamic from 'next/dynamic';
@@ -8,7 +6,6 @@ import Link from 'next/link';
 import EpisodePillSkeleton from './EpisodePillSkeleton';
 
 const EpisodePill = dynamic(() => import('./EpisodePill'), {
-  ssr: false,
   loading: () => <EpisodePillSkeleton />,
 });
 
