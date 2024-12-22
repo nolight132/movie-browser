@@ -45,7 +45,7 @@ export default function ContentListItem({ content }: { content: Content }) {
           {!isMovie && <EpisodePill content={content} />}
           <div className="pb-2">
             <div className="w-full flex justify-between h-8 sm:h-6 items-center">
-              <CardTitle className="max-w-36 h-full truncate text-xl sm:text-base">
+              <CardTitle className="max-w-4/5 h-full truncate text-xl sm:text-base">
                 {title}
               </CardTitle>
               <p className="text-sm flex items-center h-full text-muted-foreground">
