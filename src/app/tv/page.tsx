@@ -2,7 +2,8 @@ import React from 'react';
 import Shows from './components/Shows';
 import PageWrapper from '../components/PageWrapper';
 
-export default function ShowsPage() {
+export default async function ShowsPage({ searchParams }: Props) {
+  const page = parseInt((await searchParams).page || '1', 10);
   return (
     <PageWrapper>
       <div>
@@ -11,7 +12,7 @@ export default function ShowsPage() {
           Here are some popular TV shows that you might like.
         </p>
       </div>
-      <Shows />
+      <Shows page={page} />
     </PageWrapper>
   );
 }

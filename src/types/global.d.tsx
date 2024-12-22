@@ -1,4 +1,8 @@
 declare global {
+  interface ApiResponse {
+    total_pages: number; // Total number of pages
+    results: Content[]; // Array of content results
+  }
   interface Content {
     id: number;
     title?: string; // For movies
@@ -51,7 +55,10 @@ declare global {
   }
   type Props = {
     params: Promise<{ id?: string }>;
-    searchParams: Promise<{ query?: string }>;
+    searchParams: Promise<{
+      page: string;
+      query?: string;
+    }>;
   };
 }
 

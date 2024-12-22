@@ -2,6 +2,7 @@ import { getTopRatedTvShows, searchMulti } from '@/app/lib/tmdb';
 import PageWrapper from '../components/PageWrapper';
 import dynamic from 'next/dynamic';
 import ListLoading from '../components/ContentList/ListLoading';
+import PaginationView from '../components/ContentList/PagintationView';
 
 const SearchInput = dynamic(() => import('./components/SearchInput'));
 
@@ -16,12 +17,13 @@ let content: Content[] = [];
 
 export default async function SearchPage({ searchParams }: Props) {
   const query = (await searchParams).query || '';
-  const fetchedContent = query
-    ? (await searchMulti(query, 1)).results
-    : (await getTopRatedTvShows(1)).results;
+  const page = parseInt((await searchParams).page || '1', 10);
+  const data: ApiResponse = query
+    ? await searchMulti(query, page)
+    : await getTopRatedTvShows(page);
 
-  if (fetchedContent.length > 0) {
-    content = fetchedContent;
+  if (data.results.length > 0) {
+    content = data.results;
   }
 
   return (
@@ -31,6 +33,7 @@ export default async function SearchPage({ searchParams }: Props) {
       </h1>
       <SearchInput query={query} />
       <ContentList content={content} />
+      <PaginationView totalPages={data.total_pages} />
     </PageWrapper>
   );
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import ListLoading from '../../components/ContentList/ListLoading';
 import { getPopularTvShows } from '@/app/lib/tmdb';
+import PaginationView from '@/app/components/ContentList/PagintationView';
 
 const ContentList = dynamic(
   () => import('../../components/ContentList/ContentList'),
@@ -10,8 +11,19 @@ const ContentList = dynamic(
   }
 );
 
-export default async function Shows() {
-  const content = (await getPopularTvShows(1)).results;
+let content: Content[];
 
-  return <ContentList content={content} />;
+export default async function Shows({ page }: { page: number }) {
+  const data: ApiResponse = await getPopularTvShows(page);
+
+  if (data.results.length > 0) {
+    content = data.results;
+  }
+
+  return (
+    <>
+      <ContentList content={content} />
+      <PaginationView totalPages={data.total_pages} />
+    </>
+  );
 }

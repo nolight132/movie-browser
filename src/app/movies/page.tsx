@@ -2,7 +2,8 @@ import React from 'react';
 import Movies from './components/Movies';
 import PageWrapper from '../components/PageWrapper';
 
-export default function MoviesPage() {
+export default async function MoviesPage({ searchParams }: Props) {
+  const page = parseInt((await searchParams).page || '1', 10);
   return (
     <PageWrapper>
       <div>
@@ -11,7 +12,7 @@ export default function MoviesPage() {
           Here are some popular movies that you might like.
         </p>
       </div>
-      <Movies />
+      <Movies page={page} />
     </PageWrapper>
   );
 }
