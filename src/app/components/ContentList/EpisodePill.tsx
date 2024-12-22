@@ -36,15 +36,11 @@ export default function EpisodePill({ content }: { content: Content }) {
   }
 
   return (
-    <div className="absolute top-2 left-2 flex bg-gray-500/80 rounded-full">
-      <div className="p-2 h-6 rounded-full shadow-lg text-xs flex gap-2 items-center justify-center text-white font-semibold">
-        <div>
-          {seasons} {seasons === 1 ? 'Season' : 'Seasons'}
-        </div>
-        <div className="h-3 border-l border-gray-400"></div>
-        <div>
-          {episodes} {episodes === 1 ? 'Episode' : 'Episodes'}
-        </div>
+    <div className="absolute top-2 left-2 flex bg-background/80 rounded-full">
+      <div className="p-2 h-6 rounded-full shadow-lg text-sm flex gap-2 items-center justify-center text-gray-300 font-semibold">
+        <div>{seasons}S</div>
+        <div className="h-3 border-l"></div>
+        <div>{episodes}EP</div>
       </div>
     </div>
   );

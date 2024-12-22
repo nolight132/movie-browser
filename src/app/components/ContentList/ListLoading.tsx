@@ -1,7 +1,7 @@
 const ListLoading = () => {
   return (
-    <div className="w-full h-80 flex justify-center items-center">
-      <h2 className="text-4xl font-bold mt-10">Loading...</h2>
+    <div className="w-full size-80 flex justify-center items-center">
+      <div className="size-12 border-[6px] border-gray-300 border-t-gray-800 rounded-full animate-spin"></div>
     </div>
   );
 };

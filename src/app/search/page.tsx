@@ -1,8 +1,9 @@
 import { getTopRatedTvShows, searchMulti } from '@/app/lib/tmdb';
-import SearchInput from './components/SearchInput';
 import PageWrapper from '../components/PageWrapper';
 import dynamic from 'next/dynamic';
 import ListLoading from '../components/ContentList/ListLoading';
+
+const SearchInput = dynamic(() => import('./components/SearchInput'));
 
 const ContentList = dynamic(
   () => import('../components/ContentList/ContentList'),

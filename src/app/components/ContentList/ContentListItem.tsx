@@ -1,13 +1,13 @@
-import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
+import { StarSolid } from '@mynaui/icons-react';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardTitle,
+} from '@/components/ui/card';
 import Link from 'next/link';
-import EpisodePillSkeleton from './EpisodePillSkeleton';
-
-const EpisodePill = dynamic(() => import('./EpisodePill'), {
-  loading: () => <EpisodePillSkeleton />,
-});
+import Image from 'next/image';
+import EpisodePill from './EpisodePill';
 
 export default function ContentListItem({ content }: { content: Content }) {
   const isMovie: boolean = !!content.title;
@@ -17,46 +17,54 @@ export default function ContentListItem({ content }: { content: Content }) {
     : `This ${
         isMovie ? 'movie' : 'show'
       } has no overview. However, it is still worth watching!`;
+  const releaseYear = isMovie
+    ? content.release_date?.substring(0, 4)
+    : content.first_air_date?.substring(0, 4);
 
   return (
-    <Link
-      href={isMovie ? `/movies/${content.id}` : `/tv/${content.id}`}
-      className="w-60 rounded-lg overflow-hidden bg-white m-3 lg:hover:scale-105 lg:hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.3)] transition-all xs:w-40"
-    >
-      <div className="w-full h-80 relative">
-        {!isMovie && <EpisodePill content={content} />}
-        <Image
-          className="w-full h-full object-cover pointer-events-none select-none"
-          src={
-            content.poster_path
-              ? `https://image.tmdb.org/t/p/w500/${content.poster_path}`
-              : '/placeholder.jpg'
-          }
-          alt={title!}
-          width={500}
-          height={280}
-        />
-      </div>
-      <div className="w-full p-4">
-        <div className="w-full flex place-content-between truncate">
-          <div className="flex items-center">
-            <h2 className="text-base font-semibold text-gray-800 max-w-36 truncate">
-              {title}
-            </h2>
-          </div>
-          <div className="flex items-center">
-            <FontAwesomeIcon
-              icon={faStar}
-              style={{ color: '#FFD700' }}
-              className="w-4 h-4 mr-1"
-            />
-            <p className="text-gray-600 text-sm">
-              {content.vote_average.toString().substring(0, 3)}
-            </p>
-          </div>
+    <Card className="relative w-60 lg:hover:scale-105 transition-all">
+      <Link
+        href={isMovie ? `/movies/${content.id}` : `/tv/${content.id}`}
+        className="block"
+      >
+        {/* Content Image */}
+        <div className="w-full h-80 relative">
+          <Image
+            className="w-full h-full object-cover pointer-events-none select-none rounded-t-lg"
+            src={
+              content.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${content.poster_path}`
+                : '/placeholder.jpg'
+            }
+            alt={title!}
+            width={500}
+            height={280}
+          />
         </div>
-        <p className="text-gray-500 text-sm line-clamp-2 mt-2">{overview}</p>
-      </div>
-    </Link>
+
+        <CardContent className="p-4">
+          {!isMovie && <EpisodePill content={content} />}
+          <div className="pb-2">
+            <div className="w-full flex justify-between items-center">
+              <CardTitle className="max-w-36 truncate">{title}</CardTitle>
+              <p className="text-sm text-muted-foreground">{releaseYear}</p>
+            </div>
+            <div className="flex items-center">
+              <StarSolid
+                style={{ color: '#FFD700' }}
+                className="w-4 h-4 mr-1"
+              />
+              <p className="text-sm text-muted-foreground">
+                {content.vote_average.toString().substring(0, 3)}
+              </p>
+            </div>
+          </div>
+
+          <CardDescription>
+            <p className="line-clamp-2">{overview}</p>
+          </CardDescription>
+        </CardContent>
+      </Link>
+    </Card>
   );
 }

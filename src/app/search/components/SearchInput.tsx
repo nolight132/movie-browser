@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Input } from '@/components/ui/input';
 
 const SearchInput = ({ query }: { query: string }) => {
   const [input, setInput] = useState(query);
@@ -19,12 +20,12 @@ const SearchInput = ({ query }: { query: string }) => {
   };
 
   return (
-    <input
-      className="w-64 p-2 mt-4 text-black rounded-md"
+    <Input
+      className="w-64 p-2 mt-4 rounded-md"
       type="text"
       value={input}
       onChange={handleInputChange}
-      placeholder="Search for movies..."
+      placeholder="Stranger Things..."
     />
   );
 };

@@ -10,7 +10,7 @@ export default function ContentList({ content }: { content: Content[] }) {
     return <p className="text-center mt-4">No content found</p>;
   }
   return (
-    <div className="flex flex-wrap justify-center mt-10">
+    <div className="flex flex-wrap justify-center gap-3 mt-10">
       {content.map((content) =>
         content.release_date || content.first_air_date ? (
           <ContentListItem key={content.id} content={content} />

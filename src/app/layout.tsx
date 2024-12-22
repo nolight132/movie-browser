@@ -5,9 +5,6 @@ import Image from 'next/image';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter } from 'next/font/google';
 import Navbar from './components/Navbar';
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-config.autoAddCss = false;
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,7 +14,10 @@ const inter = Inter({
 
 export default function NavLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html
+      lang="en"
+      className={`${inter.className} font-geist-sans text-sm antialiased dark`}
+    >
       <head>
         <title>Movie Browser</title>
       </head>

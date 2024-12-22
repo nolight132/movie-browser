@@ -1,12 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import {
-  MagnifyingGlassIcon,
-  FilmIcon,
-  TvIcon,
-  InformationCircleIcon,
-} from '@heroicons/react/24/outline';
+import { Search, Film, Tv, InfoCircle } from '@mynaui/icons-react';
 import Link from 'next/link';
 
 const CrossButton = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
@@ -32,27 +27,27 @@ const CrossButton = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
 
 const LinkListDesktop = () => {
   return (
-    <ul className={`lg:flex space-x-6 hidden`}>
+    <ul className="lg:flex space-x-6 hidden">
       <li>
         <Link href="/search" className="font-bold flex items-center">
-          <MagnifyingGlassIcon className="w-6 h-6 stroke-2" />
+          <Search className="w-6 h-6 stroke-2" />
         </Link>
       </li>
       <li>
         <Link href="/movies" className="font-bold flex items-center">
-          <FilmIcon className="w-6 h-6 mr-2 stroke-2" />
+          <Film className="w-6 h-6 mr-2 stroke-2" />
           Movies
         </Link>
       </li>
       <li>
         <Link href="/tv" className="font-bold flex items-center">
-          <TvIcon className="w-6 h-6 mr-2 stroke-2" />
+          <Tv className="w-6 h-6 mr-2 stroke-2" />
           Shows
         </Link>
       </li>
       <li>
         <Link href="/about" className="font-bold flex items-center">
-          <InformationCircleIcon className="w-6 h-6 stroke-2" />
+          <InfoCircle className="w-6 h-6 stroke-2" />
         </Link>
       </li>
     </ul>
@@ -82,7 +77,7 @@ const LinkListMobile = ({
             isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <MagnifyingGlassIcon className="mr-3 w-12 h-12 stroke-2" />
+          <Search className="mr-3 w-12 h-12 stroke-2" />
           Search
         </Link>
       </li>
@@ -94,7 +89,7 @@ const LinkListMobile = ({
             isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <FilmIcon className="mr-3 w-12 h-12 stroke-2" />
+          <Film className="mr-3 w-12 h-12 stroke-2" />
           Movies
         </Link>
       </li>
@@ -106,7 +101,7 @@ const LinkListMobile = ({
             isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <TvIcon className="mr-3 w-12 h-12 stroke-2" />
+          <Tv className="mr-3 w-12 h-12 stroke-2" />
           Shows
         </Link>
       </li>
@@ -118,7 +113,7 @@ const LinkListMobile = ({
             isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <InformationCircleIcon className="mr-3 w-12 h-12 stroke-2" />
+          <InfoCircle className="mr-3 w-12 h-12 stroke-2" />
           About
         </Link>
       </li>
@@ -134,13 +129,11 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    // Disable scroll when menu is open
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-
     return () => {
       document.body.style.overflow = '';
     };
