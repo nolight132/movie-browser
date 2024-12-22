@@ -1,7 +1,15 @@
 import { getTopRatedTvShows, searchMulti } from '@/app/lib/tmdb';
 import SearchInput from './components/SearchInput';
-import ContentList from '@/app/components/ContentList/ContentList';
 import PageWrapper from '../components/PageWrapper';
+import dynamic from 'next/dynamic';
+import ListLoading from '../components/ContentList/ListLoading';
+
+const ContentList = dynamic(
+  () => import('../components/ContentList/ContentList'),
+  {
+    loading: () => <ListLoading />,
+  }
+);
 
 let content: Content[] = [];
 

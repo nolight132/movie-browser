@@ -24,8 +24,8 @@ export default function NavLayout({ children }: { children: React.ReactNode }) {
       <body>
         <Navbar />
         <main className="pt-10">{children}</main>
-        <footer className="text-white p-4 mt-10 text-center">
-          <div className="flex justify-center items-center space-x-2">
+        <footer className="text-white p-4 mt-10 text-center pb-2">
+          <div className="flex flex-col gap-2 lg:flex-row justify-center items-center">
             <Image src="tmdb-logo.svg" alt="TMDb Logo" width={64} height={8} />
             <p>
               This product uses the TMDB API but is not endorsed or certified by
