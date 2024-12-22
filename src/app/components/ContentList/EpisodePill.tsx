@@ -37,9 +37,9 @@ export default function EpisodePill({ content }: { content: Content }) {
 
   return (
     <div className="absolute top-2 left-2 flex bg-background/80 rounded-full">
-      <div className="p-2 h-6 rounded-full shadow-lg text-sm flex gap-2 items-center justify-center text-gray-300 font-semibold">
+      <div className="p-2 h-5 rounded-full shadow-lg text-xs flex gap-2 items-center justify-center text-muted-foreground font-semibold">
         <div>{seasons}S</div>
-        <div className="h-3 border-l"></div>
+        <div className="h-2 border-l border-muted-foreground"></div>
         <div>{episodes}EP</div>
       </div>
     </div>
