@@ -68,7 +68,7 @@ const LinkListMobile = ({
 }) => {
   return (
     <ul
-      className={`lg:hidden absolute h-screen w-screen p-6 top-0 text-5xl font-bold space-y-8 left-0 flex flex-col justify-center text-white text-opacity-80 transition-all ease-in-out duration-300 ${
+      className={`lg:hidden z-10 absolute h-screen w-screen p-6 top-0 text-5xl font-bold space-y-8 left-0 flex flex-col justify-center text-white text-opacity-80 transition-all ease-in-out duration-300 ${
         isMenuOpen
           ? 'opacity-100 translate-y-0'
           : 'opacity-0 translate-y-4 pointer-events-none'
@@ -149,16 +149,20 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`fixed z-50 w-screen h-screen bg-black bg-opacity-50 backdrop-blur-md transition-all ease-in-out duration-300 ${
-          isMenuOpen ? 'block opacity-100' : 'opacity-0 pointer-events-none'
+        className={`fixed z-40 w-screen h-screen bg-black bg-opacity-50 transition-all ease-in-out duration-300 ${
+          isMenuOpen
+            ? 'block opacity-100 backdrop-blur-md'
+            : 'opacity-0 pointer-events-none'
         }`}
       />
       <nav
-        className={`fixed w-screen h-18 z-50 p-4 bg-black bg-opacity-50 backdrop-blur-md shadow-md text-white transition-all ease-in-out duration-300 ${
-          isMenuOpen && 'shadow-none backdrop-blur-none bg-opacity-0'
+        className={`fixed w-screen h-18 z-50 p-4 bg-black text-white transition-all ease-in-out duration-300 ${
+          isMenuOpen
+            ? 'shadow-none backdrop-blur-none bg-opacity-0'
+            : 'shadow-md backdrop-blur-md bg-opacity-50'
         }`}
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between relative z-50">
           <Link
             href="/"
             className={`text-xl font-bold transition-all ease-in-out duration-300 ${
