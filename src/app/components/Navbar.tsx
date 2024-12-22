@@ -1,6 +1,6 @@
 'use client';
 
-import { act, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Search, Film, Tv, InfoCircle } from '@mynaui/icons-react';
 import Link from 'next/link';
 import ModeToggle from './ModeToggle';
