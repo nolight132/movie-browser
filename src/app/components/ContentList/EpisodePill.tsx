@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import EpisodePillSkeleton from './EpisodePillSkeleton';
+import { Separator } from '@/components/ui/separator';
 
 export default function EpisodePill({ content }: { content: Content }) {
   const [seasons, setSeasons] = useState<number | null>(null);
@@ -36,10 +37,10 @@ export default function EpisodePill({ content }: { content: Content }) {
   }
 
   return (
-    <div className="absolute top-2 left-2 flex bg-background/80 rounded-full">
-      <div className="p-2 h-5 rounded-full shadow-lg text-xs flex gap-2 items-center justify-center text-muted-foreground font-semibold">
+    <div className="absolute top-2 left-2 flex bg-background/90 rounded-full">
+      <div className="p-2 h-5 rounded-full shadow-lg text-xs flex gap-2 items-center justify-center text-foreground/90 font-semibold">
         <div>{seasons}S</div>
-        <div className="h-2 border-l border-muted-foreground"></div>
+        <Separator orientation="vertical" className="h-2 bg-foreground/90" />
         <div>{episodes}EP</div>
       </div>
     </div>

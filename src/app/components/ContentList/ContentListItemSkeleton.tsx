@@ -8,12 +8,11 @@ import { StarSolid } from '@mynaui/icons-react';
 
 export default function ContentListItemSkeleton() {
   return (
-    <Card className="relative w-60 lg:hover:scale-105 transition-all">
+    <Card className="relative w-full sm:w-60 lg:hover:scale-105 transition-all">
       <Link href="#" className="block">
-        <div className="w-full h-80 relative">
+        <div className="w-full aspect-[2/3] sm:aspect-[4/5] relative">
           <Skeleton className="w-full h-full rounded-t-lg" />
         </div>
-
         <CardContent className="p-4">
           <EpisodePillSkeleton />
 
@@ -32,9 +31,8 @@ export default function ContentListItemSkeleton() {
           </div>
 
           <CardDescription>
-            {/* Skeleton for Overview */}
-            <Skeleton className="w-48 h-3 rounded-lg" />
-            <Skeleton className="w-36 h-3 rounded-lg mt-2" />
+            <Skeleton className="w-4/5 h-3 rounded-lg" />
+            <Skeleton className="w-1/2 h-3 rounded-lg mt-2" />
           </CardDescription>
         </CardContent>
       </Link>

@@ -7,6 +7,7 @@ export default async function Page() {
         Welcome to My Movie Database App!
         <ListLoading />
       </h1>
+      <h2>[UNDER CONSTRUCTION]</h2>
     </div>
   );
 }

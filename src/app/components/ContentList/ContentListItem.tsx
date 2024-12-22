@@ -22,12 +22,12 @@ export default function ContentListItem({ content }: { content: Content }) {
     : content.first_air_date?.substring(0, 4);
 
   return (
-    <Card className="relative aspect-[2/3] sm:w-60 lg:hover:scale-105 transition-all">
+    <Card className="relative lg:hover:scale-105 transition-all">
       <Link
         href={isMovie ? `/movies/${content.id}` : `/tv/${content.id}`}
         className="block"
       >
-        <div className="w-full aspect-[2/3] relative">
+        <div className="w-full aspect-[4/5] relative">
           <Image
             className="w-full h-full object-cover pointer-events-none select-none rounded-t-lg"
             src={
@@ -40,7 +40,6 @@ export default function ContentListItem({ content }: { content: Content }) {
             height={280}
           />
         </div>
-
         <CardContent className="p-4">
           {!isMovie && <EpisodePill content={content} />}
           <div className="pb-2">
@@ -48,7 +47,7 @@ export default function ContentListItem({ content }: { content: Content }) {
               <CardTitle className="max-w-4/5 h-full truncate text-xl sm:text-base">
                 {title}
               </CardTitle>
-              <p className="text-sm flex items-center h-full text-muted-foreground">
+              <p className="text-sm flex items-center h-full pl-2 text-muted-foreground">
                 {releaseYear}
               </p>
             </div>
@@ -62,7 +61,6 @@ export default function ContentListItem({ content }: { content: Content }) {
               </p>
             </div>
           </div>
-
           <CardDescription>
             <p className="line-clamp-2">{overview}</p>
           </CardDescription>

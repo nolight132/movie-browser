@@ -3,6 +3,15 @@
 import { useEffect, useState } from 'react';
 import { Search, Film, Tv, InfoCircle } from '@mynaui/icons-react';
 import Link from 'next/link';
+import ModeToggle from './ModeToggle';
+import { Button } from '@/components/ui/button';
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu';
 
 const CrossButton = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
   return (
@@ -27,30 +36,50 @@ const CrossButton = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
 
 const LinkListDesktop = () => {
   return (
-    <ul className="lg:flex space-x-6 hidden">
-      <li>
-        <Link href="/search" className="font-bold flex items-center">
-          <Search className="w-6 h-6 stroke-2" />
-        </Link>
-      </li>
-      <li>
-        <Link href="/movies" className="font-bold flex items-center">
-          <Film className="w-6 h-6 mr-2 stroke-2" />
-          Movies
-        </Link>
-      </li>
-      <li>
-        <Link href="/tv" className="font-bold flex items-center">
-          <Tv className="w-6 h-6 mr-2 stroke-2" />
-          Shows
-        </Link>
-      </li>
-      <li>
-        <Link href="/about" className="font-bold flex items-center">
-          <InfoCircle className="w-6 h-6 stroke-2" />
-        </Link>
-      </li>
-    </ul>
+    <NavigationMenu className="lg:flex lg:items-center gap-6 hidden">
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <Link href="/search" legacyBehavior passHref>
+            <NavigationMenuLink
+              className={`${navigationMenuTriggerStyle()} bg-background/0 hover:bg-background/10 focus:bg-background/10`}
+            >
+              <Search className="size-5 mr-2" />
+              Search
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/movies" legacyBehavior passHref>
+            <NavigationMenuLink
+              className={`${navigationMenuTriggerStyle()} bg-background/0 hover:bg-background/10 focus:bg-background/10`}
+            >
+              <Film className="size-5 mr-2" />
+              Movies
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/tv" legacyBehavior passHref>
+            <NavigationMenuLink
+              className={`${navigationMenuTriggerStyle()} bg-background/0 hover:bg-background/10 focus:bg-background/10`}
+            >
+              <Tv className="size-5 mr-2" />
+              Shows
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/movies" legacyBehavior passHref>
+            <NavigationMenuLink
+              className={`${navigationMenuTriggerStyle()} bg-background/0 hover:bg-background/10 focus:bg-background/10`}
+            >
+              <InfoCircle className="size-5 mr-2" />
+              About
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 };
 
@@ -63,11 +92,12 @@ const LinkListMobile = ({
 }) => {
   return (
     <ul
-      className={`lg:hidden z-10 absolute h-screen w-screen p-6 top-0 text-5xl font-bold space-y-8 left-0 flex flex-col justify-center text-white text-opacity-80 transition-all ease-in-out duration-300 ${
+      className={`lg:hidden z-10 absolute h-screen w-screen p-6 top-0 text-5xl text-foreground/70 font-bold space-y-8 left-0 right-0 flex flex-col justify-center text-opacity-80 transition-all ease-in-out duration-300 ${
         isMenuOpen
           ? 'opacity-100 translate-y-0'
           : 'opacity-0 translate-y-4 pointer-events-none'
       }`}
+      onClick={toggleMenu}
     >
       <li>
         <Link
@@ -142,36 +172,43 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`fixed z-40 w-screen h-screen bg-black bg-opacity-50 transition-all ease-in-out duration-300 ${
+        className={`fixed z-40 w-screen h-screen bg-background/50 transition-all ease-in-out duration-300 ${
           isMenuOpen
-            ? 'block opacity-100 backdrop-blur-md'
+            ? 'opacity-100 backdrop-blur-md'
             : 'opacity-0 pointer-events-none'
         }`}
       />
       <nav
-        className={`fixed w-screen h-18 z-50 p-4 bg-black text-white transition-all ease-in-out duration-300 ${
+        className={`fixed top-0 left-0 right-0 w-screen h-18 z-50 p-4 transition-all ease-in-out duration-300 ${
           isMenuOpen
-            ? 'shadow-none backdrop-blur-none bg-opacity-0'
-            : 'shadow-md backdrop-blur-md bg-opacity-50'
+            ? 'shadow-none backdrop-blur-none bg-background/0'
+            : 'shadow-sm backdrop-blur-md bg-background/50'
         }`}
       >
         <div className="flex items-center justify-between relative z-50">
           <Link
             href="/"
-            className={`text-xl font-bold transition-all ease-in-out duration-300 ${
-              isMenuOpen && `text-2xl`
+            className={`font-bold transition-all ease-in-out duration-300 ${
+              isMenuOpen ? 'text-2xl' : 'text-xl'
             }`}
           >
             Movie Browser
           </Link>
-          <button
-            className="lg:hidden block p-2"
-            onClick={toggleMenu}
-            aria-label="Toggle Menu"
-          >
-            <CrossButton isMenuOpen={isMenuOpen} />
-          </button>
-          <LinkListDesktop />
+          <div className="flex gap-1 items-center">
+            <LinkListDesktop />
+            <div className="flex gap-3">
+              <ModeToggle />
+              <Button
+                variant="outline"
+                size="icon"
+                className="lg:hidden block p-2 bg-background/20"
+                onClick={toggleMenu}
+                aria-label="Toggle Menu"
+              >
+                <CrossButton isMenuOpen={isMenuOpen} />
+              </Button>
+            </div>
+          </div>
         </div>
         <LinkListMobile isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
       </nav>

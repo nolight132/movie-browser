@@ -27,7 +27,7 @@ export default async function SearchPage({ searchParams }: Props) {
   return (
     <PageWrapper>
       <h1 className="text-4xl font-bold mt-10">
-        {query ? `Search results for: “${query}”` : 'Search for something!'}
+        {query ? `Search for: “${query}”` : 'Search for ...'}
       </h1>
       <SearchInput query={query} />
       <ContentList content={content} />
