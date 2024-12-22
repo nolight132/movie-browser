@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { act, useEffect, useState } from 'react';
 import { Search, Film, Tv, InfoCircle } from '@mynaui/icons-react';
 import Link from 'next/link';
 import ModeToggle from './ModeToggle';
@@ -12,6 +12,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
+import { usePathname } from 'next/navigation';
 
 const CrossButton = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
   return (
@@ -35,49 +36,32 @@ const CrossButton = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
 };
 
 const LinkListDesktop = () => {
+  const pathname = usePathname();
+
   return (
     <NavigationMenu className="lg:flex lg:items-center gap-6 hidden">
       <NavigationMenuList>
-        <NavigationMenuItem>
-          <Link href="/search" legacyBehavior passHref>
-            <NavigationMenuLink
-              className={`${navigationMenuTriggerStyle()} bg-background/0 hover:bg-background/10 focus:bg-background/10`}
-            >
-              <Search className="size-5 mr-2" />
-              Search
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/movies" legacyBehavior passHref>
-            <NavigationMenuLink
-              className={`${navigationMenuTriggerStyle()} bg-background/0 hover:bg-background/10 focus:bg-background/10`}
-            >
-              <Film className="size-5 mr-2" />
-              Movies
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/tv" legacyBehavior passHref>
-            <NavigationMenuLink
-              className={`${navigationMenuTriggerStyle()} bg-background/0 hover:bg-background/10 focus:bg-background/10`}
-            >
-              <Tv className="size-5 mr-2" />
-              Shows
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/movies" legacyBehavior passHref>
-            <NavigationMenuLink
-              className={`${navigationMenuTriggerStyle()} bg-background/0 hover:bg-background/10 focus:bg-background/10`}
-            >
-              <InfoCircle className="size-5 mr-2" />
-              About
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
+        {[
+          { href: '/search', label: 'Search', Icon: Search },
+          { href: '/movies', label: 'Movies', Icon: Film },
+          { href: '/tv', label: 'Shows', Icon: Tv },
+          { href: '/about', label: 'About', Icon: InfoCircle },
+        ].map(({ href, label, Icon }) => (
+          <NavigationMenuItem key={href}>
+            <Link href={href} legacyBehavior passHref>
+              <NavigationMenuLink
+                className={`${navigationMenuTriggerStyle()} focus:bg-foreground focus:text-secondary transition-all duration-300 hover:bg-foreground/10 ${
+                  pathname === href
+                    ? 'bg-foreground text-secondary'
+                    : 'bg-background/0 text-foreground'
+                }`}
+              >
+                <Icon className="size-5 mr-2" />
+                {label}
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        ))}
       </NavigationMenuList>
     </NavigationMenu>
   );

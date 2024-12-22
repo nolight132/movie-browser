@@ -1,13 +1,14 @@
 import ListLoading from './components/ContentList/ListLoading';
+import PageWrapper from './components/PageWrapper';
 
 export default async function Page() {
   return (
-    <div className="min-h-screen flex flex-col items-center">
+    <PageWrapper className="flex">
       <h1 className="text-center mt-10 text-4xl font-bold">
         Welcome to My Movie Database App!
         <ListLoading />
       </h1>
-      <h2>[UNDER CONSTRUCTION]</h2>
-    </div>
+      <h2 className="text-center">[UNDER CONSTRUCTION]</h2>
+    </PageWrapper>
   );
 }
