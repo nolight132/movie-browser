@@ -53,6 +53,8 @@ const LanguageSwitcher = ({
           <SelectItem value="ru">Русский</SelectItem>
           <SelectItem value="pl">Polski</SelectItem>
           <SelectItem value="de">Deutsch</SelectItem>
+          <SelectItem value="es">Español</SelectItem>
+          <SelectItem value="fr">Français</SelectItem>
           {/* Add more languages as needed */}
         </SelectGroup>
       </SelectContent>

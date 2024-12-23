@@ -12,11 +12,7 @@
       "toggle": "Zmień motyw"
     },
     "language": {
-      "title": "Wybierz język",
-      "en": "Angielski",
-      "ru": "Rosyjski",
-      "pl": "Polski",
-      "de": "Niemiecki"
+      "title": "Wybierz język"
     }
   },
   "search": {
@@ -25,7 +21,9 @@
     "filters": {
       "filters-button-label": "Filtry",
       "clear-button-label": "Wyczyść",
-      "all": "Wszystkie"
+      "all": "Wszystkie",
+      "movies": "Filmy",
+      "shows": "Seriale"
     }
   },
   "movies": {

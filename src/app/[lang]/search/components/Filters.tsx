@@ -14,7 +14,7 @@ const Filters = ({
   const router = useRouter();
 
   const clear = () => {
-    router.push('/search');
+    router.push('search');
     setInput('');
   };
 

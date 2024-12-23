@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "movies": "Películas",
+    "tv": "Series",
+    "search": "Buscar",
+    "about": "Sobre nosotros",
+    "modes": {
+      "light": "Claro",
+      "dark": "Oscuro",
+      "system": "Sistema",
+      "toggle": "Cambiar tema"
+    },
+    "language": {
+      "title": "Seleccionar idioma"
+    }
+  },
+  "search": {
+    "title": "Buscar por",
+    "placeholder": "Stranger Things...",
+    "filters": {
+      "filters-button-label": "Filtros",
+      "clear-button-label": "Limpiar",
+      "all": "Todos",
+      "movies": "Películas",
+      "shows": "Series"
+    }
+  },
+  "movies": {
+    "title": "Películas populares",
+    "description": "Aquí tienes algunas películas populares que podrían gustarte."
+  },
+  "shows": {
+    "title": "Series populares",
+    "description": "Aquí tienes algunas series populares que podrían gustarte.",
+    "seasons": "Temporadas",
+    "episodes": "Episodios"
+  },
+  "about": {
+    "title": "Sobre nosotros",
+    "description": "bubebube"
+  }
+}

@@ -12,11 +12,7 @@
       "toggle": "Thema wechseln"
     },
     "language": {
-      "title": "Sprache wählen",
-      "en": "Englisch",
-      "ru": "Russisch",
-      "pl": "Polnisch",
-      "de": "Deutsch"
+      "title": "Sprache wählen"
     }
   },
   "search": {
