@@ -49,10 +49,10 @@ const LanguageSwitcher = ({
       <SelectContent>
         <SelectGroup>
           <SelectLabel>{dictionary.language.title}</SelectLabel>
-          <SelectItem value="en">{dictionary.language.en}</SelectItem>
-          <SelectItem value="ru">{dictionary.language.ru}</SelectItem>
-          <SelectItem value="pl">{dictionary.language.pl}</SelectItem>
-          <SelectItem value="de">{dictionary.language.de}</SelectItem>
+          <SelectItem value="en">English</SelectItem>
+          <SelectItem value="ru">Русский</SelectItem>
+          <SelectItem value="pl">Polski</SelectItem>
+          <SelectItem value="de">Deutsch</SelectItem>
           {/* Add more languages as needed */}
         </SelectGroup>
       </SelectContent>

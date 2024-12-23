@@ -42,8 +42,7 @@ const LinkListDesktop = ({
 }: {
   dictionary: Awaited<ReturnType<typeof getDictionary>>['nav'];
 }) => {
-  const pathname = usePathname();
-
+  const pathname = usePathname().replace(/^\/[a-z]{2}(\/|$)/, '/');
   return (
     <NavigationMenu className="lg:flex lg:items-center gap-6 hidden">
       <NavigationMenuList>
@@ -61,7 +60,7 @@ const LinkListDesktop = ({
             <Link href={href} legacyBehavior passHref>
               <NavigationMenuLink
                 className={`${navigationMenuTriggerStyle()} focus:bg-foreground focus:text-secondary transition-all duration-300 hover:bg-foreground/10 ${
-                  pathname === href
+                  pathname === `/${href}`
                     ? 'bg-foreground text-secondary'
                     : 'bg-background/0 text-foreground'
                 }`}

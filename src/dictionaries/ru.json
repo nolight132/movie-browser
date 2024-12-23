@@ -20,7 +20,7 @@
     }
   },
   "search": {
-    "title": "Искать",
+    "title": "Поиск",
     "placeholder": "Очень Странные Дела...",
     "filters": {
       "filters-button-label": "Фильтры",
