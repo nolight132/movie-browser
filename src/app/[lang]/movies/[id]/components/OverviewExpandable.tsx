@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { CardTitle } from '@/components/ui/card';
+import { Card, CardTitle } from '@/components/ui/card';
 import { type getDictionary } from '@/get-dictionary';
 import { ChevronDoubleDown, ChevronDoubleUp } from '@mynaui/icons-react';
 import { useEffect, useState } from 'react';
@@ -18,21 +18,21 @@ const OverviewExpandable = ({
   const shouldExpand = overview.length > 210;
 
   return (
-    <div className="p-3 space-y-3">
+    <Card className="p-6 space-y-3">
       <CardTitle className="text-3xl font-semibold">
         {dictionary.content_details.overview}
       </CardTitle>
       <div>
         <div className="relative">
           <p
-            className={`text-lg text-muted-foreground overflow-hidden transition-[max-height] duration-300 ${
+            className={`text-lg text-muted-foreground overflow-hidden transition-[max-height] duration-200 ${
               expanded ? 'max-h-[9999px]' : 'max-h-[120px] sm:max-h-[160px]'
             }`}
           >
             {overview}
           </p>
           <div
-            className={`h-32 w-full left-0 bottom-0 absolute bg-gradient-to-b from-transparent to-background transition-opacity duration-300 ease-linear pointer-events-none ${
+            className={`h-32 w-full left-0 bottom-0 absolute bg-gradient-to-b from-transparent to-background transition-opacity duration-200 ease-linear pointer-events-none ${
               shouldExpand && !expanded ? 'opacity-100' : 'opacity-0'
             }`}
           ></div>
@@ -59,7 +59,7 @@ const OverviewExpandable = ({
           </span>
         </Button>
       )}
-    </div>
+    </Card>
   );
 };
 

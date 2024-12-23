@@ -203,11 +203,11 @@ const Navbar = ({
           >
             Movie Browser
           </Link>
-          <div className="flex gap-1 items-center">
+          <div className="flex gap-4 items-center">
             <LanguageSwitcher dictionary={dictionary} />
             <ModeToggle dictionary={dictionary} />
             <LinkListDesktop dictionary={dictionary} />
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               <Button
                 variant="outline"
                 size="icon"
