@@ -1,4 +1,31 @@
 {
+  "ui": {
+    "back": "Назад",
+    "loading": "Загрузка...",
+    "no_results": "Результатов не найдено",
+    "no_results_description": "Попробуйте поискать что-то другое.",
+    "collapse": "Свернуть",
+    "expand": "Развернуть",
+    "read_more": "Читать далее",
+    "read_less": "Скрыть",
+    "time": {
+      "hours": "часов",
+      "hours_short": "ч",
+      "minutes": "минут",
+      "minutes_short": "мин",
+      "seconds": "секунд",
+      "seconds_short": "сек",
+      "days": "дней",
+      "days_short": "дн",
+      "weeks": "недели",
+      "months": "месяцы",
+      "months_short": "мес",
+      "years": "годы",
+      "today": "Сегодня",
+      "yesterday": "Вчера",
+      "tomorrow": "Завтра"
+    }
+  },
   "nav": {
     "home": "Главная",
     "movies": "Фильмы",
@@ -9,7 +36,7 @@
       "light": "Светлая",
       "dark": "Темная",
       "system": "Системная",
-      "toggle": "Сменить тему"
+      "toggle": "Переключить тему"
     },
     "language": {
       "title": "Выберите язык"
@@ -17,10 +44,10 @@
   },
   "search": {
     "title": "Поиск",
-    "placeholder": "Очень Странные Дела...",
+    "placeholder": "Stranger Things...",
     "filters": {
-      "filters-button-label": "Фильтры",
-      "clear-button-label": "Очистить",
+      "filters_button_label": "Фильтры",
+      "clear_button_label": "Очистить",
       "all": "Все",
       "movies": "Фильмы",
       "shows": "Сериалы"
@@ -28,16 +55,43 @@
   },
   "movies": {
     "title": "Популярные фильмы",
-    "description": "Вот некоторые популярные фильмы, которые Вам могут понравиться."
+    "description": "Вот несколько популярных фильмов, которые могут Вам понравиться.",
+    "no_description": "У этого фильма нет описания, но он все равно отличный!"
   },
   "shows": {
-    "title": "Популярные сериалы",
-    "description": "Вот некоторые популярные сериалы, которые Вам могут понравиться.",
-    "seasons": "Сезонов",
-    "episodes": "Эпизодов"
+    "title": "Популярные шоу",
+    "description": "Вот несколько популярных шоу, которые могут вам понравиться.",
+    "no_description": "Это шоу не имеет описания, но оно все равно отличное!",
+    "seasons": "Сезоны",
+    "episodes": "Эпизоды"
   },
   "about": {
-    "title": "О нас",
-    "description": "бубебубе"
+    "title": "О сайте",
+    "description": "bubebube"
+  },
+  "content_details": {
+    "genres": "Жанры",
+    "rating": "Рейтинг",
+    "release_date": "Дата выпуска",
+    "origin_country": "Страна происхождения",
+    "duration": "Длительность",
+    "overview": "Описание",
+    "seasons": "Сезоны",
+    "episodes": "Эпизоды",
+    "cast": {
+      "title": "Актеры",
+      "person": {
+        "adult": "Взрослый",
+        "gender": "Пол",
+        "known_for_department": "Известен по отделу",
+        "name": "Имя",
+        "original_name": "Оригинальное имя",
+        "popularity": "Популярность",
+        "profile_path": "Путь к профилю",
+        "credit_id": "ID кредита",
+        "department": "Отдел",
+        "job": "Работа"
+      }
+    }
   }
 }

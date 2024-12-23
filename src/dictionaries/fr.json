@@ -1,4 +1,31 @@
 {
+  "ui": {
+    "back": "Retour",
+    "loading": "Chargement...",
+    "no_results": "Aucun résultat trouvé",
+    "no_results_description": "Essayez de chercher quelque chose d'autre.",
+    "collapse": "Réduire",
+    "expand": "Développer",
+    "read_more": "Lire la suite",
+    "read_less": "Lire moins",
+    "time": {
+      "hours": "heures",
+      "hours_short": "h",
+      "minutes": "minutes",
+      "minutes_short": "min",
+      "seconds": "secondes",
+      "seconds_short": "sec",
+      "days": "jours",
+      "days_short": "j",
+      "weeks": "semaines",
+      "months": "mois",
+      "months_short": "mo",
+      "years": "ans",
+      "today": "Aujourd'hui",
+      "yesterday": "Hier",
+      "tomorrow": "Demain"
+    }
+  },
   "nav": {
     "home": "Accueil",
     "movies": "Films",
@@ -9,18 +36,18 @@
       "light": "Clair",
       "dark": "Sombre",
       "system": "Système",
-      "toggle": "Changer le thème"
+      "toggle": "Changer de thème"
     },
     "language": {
-      "title": "Choisir une langue"
+      "title": "Choisir la langue"
     }
   },
   "search": {
-    "title": "Rechercher par",
+    "title": "Chercher",
     "placeholder": "Stranger Things...",
     "filters": {
-      "filters-button-label": "Filtres",
-      "clear-button-label": "Effacer",
+      "filters_button_label": "Filtres",
+      "clear_button_label": "Effacer",
       "all": "Tout",
       "movies": "Films",
       "shows": "Séries"
@@ -28,16 +55,43 @@
   },
   "movies": {
     "title": "Films populaires",
-    "description": "Voici quelques films populaires que vous pourriez aimer."
+    "description": "Voici quelques films populaires qui pourraient vous plaire.",
+    "no_description": "Ce film n'a pas de description, mais il est tout de même super !"
   },
   "shows": {
     "title": "Séries populaires",
-    "description": "Voici quelques séries populaires que vous pourriez aimer.",
+    "description": "Voici quelques séries populaires qui pourraient vous plaire.",
+    "no_description": "Cette série n'a pas de description, mais elle est tout de même géniale !",
     "seasons": "Saisons",
     "episodes": "Épisodes"
   },
   "about": {
     "title": "À propos",
     "description": "bubebube"
+  },
+  "content_details": {
+    "genres": "Genres",
+    "rating": "Évaluation",
+    "release_date": "Date de sortie",
+    "origin_country": "Pays d'origine",
+    "duration": "Durée",
+    "overview": "Résumé",
+    "seasons": "Saisons",
+    "episodes": "Épisodes",
+    "cast": {
+      "title": "Casting",
+      "person": {
+        "adult": "Adulte",
+        "gender": "Genre",
+        "known_for_department": "Département connu",
+        "name": "Nom",
+        "original_name": "Nom original",
+        "popularity": "Popularité",
+        "profile_path": "Chemin du profil",
+        "credit_id": "ID crédit",
+        "department": "Département",
+        "job": "Travail"
+      }
+    }
   }
 }

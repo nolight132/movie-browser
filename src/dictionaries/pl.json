@@ -1,4 +1,31 @@
 {
+  "ui": {
+    "back": "Wstecz",
+    "loading": "Ładowanie...",
+    "no_results": "Brak wyników",
+    "no_results_description": "Spróbuj wyszukać coś innego.",
+    "collapse": "Zwiń",
+    "expand": "Rozwiń",
+    "read_more": "Czytaj więcej",
+    "read_less": "Czytaj mniej",
+    "time": {
+      "hours": "godzin",
+      "hours_short": "g",
+      "minutes": "minut",
+      "minutes_short": "min",
+      "seconds": "sekund",
+      "seconds_short": "sek",
+      "days": "dni",
+      "days_short": "dni",
+      "weeks": "tygodni",
+      "months": "miesięcy",
+      "months_short": "mies",
+      "years": "lat",
+      "today": "Dzisiaj",
+      "yesterday": "Wczoraj",
+      "tomorrow": "Jutro"
+    }
+  },
   "nav": {
     "home": "Strona główna",
     "movies": "Filmy",
@@ -9,7 +36,7 @@
       "light": "Jasny",
       "dark": "Ciemny",
       "system": "Systemowy",
-      "toggle": "Zmień motyw"
+      "toggle": "Zmień tryb"
     },
     "language": {
       "title": "Wybierz język"
@@ -19,25 +46,52 @@
     "title": "Szukaj",
     "placeholder": "Stranger Things...",
     "filters": {
-      "filters-button-label": "Filtry",
-      "clear-button-label": "Wyczyść",
-      "all": "Wszystkie",
+      "filters_button_label": "Filtry",
+      "clear_button_label": "Wyczyść",
+      "all": "Wszystko",
       "movies": "Filmy",
-      "shows": "Seriale"
+      "shows": "Programy"
     }
   },
   "movies": {
     "title": "Popularne filmy",
-    "description": "Oto kilka popularnych filmów, które mogą Ci się spodobać."
+    "description": "Oto kilka popularnych filmów, które mogą Ci się spodobać.",
+    "no_description": "Ten film nie ma opisu, ale nadal jest świetny!"
   },
   "shows": {
-    "title": "Popularne seriale",
-    "description": "Oto kilka popularnych seriali, które mogą Ci się spodobać.",
-    "seasons": "Sezonów",
-    "episodes": "Odcinków"
+    "title": "Popularne programy",
+    "description": "Oto kilka popularnych programów, które mogą Ci się spodobać.",
+    "no_description": "Ten program nie ma opisu, ale nadal jest świetny!",
+    "seasons": "Sezony",
+    "episodes": "Odcinki"
   },
   "about": {
     "title": "O nas",
     "description": "bubebube"
+  },
+  "content_details": {
+    "genres": "Gatunki",
+    "rating": "Ocena",
+    "release_date": "Premiera",
+    "origin_country": "Kraj pochodzenia",
+    "duration": "Czas trwania",
+    "overview": "Opis",
+    "seasons": "Sezony",
+    "episodes": "Odcinki",
+    "cast": {
+      "title": "Obsada",
+      "person": {
+        "adult": "Dorosły",
+        "gender": "Płeć",
+        "known_for_department": "Znany z działu",
+        "name": "Imię",
+        "original_name": "Oryginalne imię",
+        "popularity": "Popularność",
+        "profile_path": "Ścieżka do profilu",
+        "credit_id": "ID kredytu",
+        "department": "Dział",
+        "job": "Zawód"
+      }
+    }
   }
 }

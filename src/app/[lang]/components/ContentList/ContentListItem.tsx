@@ -19,17 +19,21 @@ export default async function ContentListItem({
 }) {
   const isMovie: boolean = !!content.title;
   const title = isMovie ? content.title : content.name;
-  const overview = content.overview
-    ? content.overview
-    : `This ${
-        isMovie ? 'movie' : 'show'
-      } has no overview. However, it is still worth watching!`;
+  const getOverview = () => {
+    if (content.overview) {
+      return content.overview;
+    }
+    if (isMovie) {
+      return dictionary.movies.no_description;
+    }
+    return dictionary.shows.no_description;
+  };
   const releaseYear = isMovie
     ? content.release_date?.substring(0, 4)
     : content.first_air_date?.substring(0, 4);
 
   return (
-    <Card className="relative lg:hover:scale-105 transition-all">
+    <Card className="relative lg:hover:scale-105 transition-all max-w-[22rem]">
       <Link
         href={isMovie ? `movies/${content.id}` : `tv/${content.id}`}
         className="block"
@@ -61,17 +65,14 @@ export default async function ContentListItem({
               </p>
             </div>
             <div className="flex items-center">
-              <StarSolid
-                style={{ color: '#FFD700' }}
-                className="w-4 h-4 mr-1"
-              />
+              <StarSolid className="size-4 mr-1 text-yellow-400" />
               <p className="text-sm text-muted-foreground">
                 {content.vote_average.toString().substring(0, 3)}
               </p>
             </div>
           </div>
           <CardDescription>
-            <p className="line-clamp-2">{overview}</p>
+            <p className="line-clamp-2">{getOverview()}</p>
           </CardDescription>
         </CardContent>
       </Link>

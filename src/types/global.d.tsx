@@ -54,6 +54,21 @@ declare global {
       air_date: string | null;
       poster_path: string | null;
     }[]; // For TV shows
+    credits?: {
+      cast: {
+        adult: boolean;
+        gender: number;
+        id: number;
+        known_for_department: string;
+        name: string;
+        original_name: string;
+        popularity: number;
+        profile_path: string | null;
+        character: string;
+        credit_id: string;
+        order: number;
+      }[];
+    };
   }
   type Props = {
     params: Promise<{ id?: string; lang: Locale }>;

@@ -42,25 +42,34 @@ const LinkListDesktop = ({
 }: {
   dictionary: Awaited<ReturnType<typeof getDictionary>>['nav'];
 }) => {
-  const pathname = usePathname().replace(/^\/[a-z]{2}(\/|$)/, '/');
+  const pathname = usePathname();
+  const locale = pathname.split('/')[1];
   return (
     <NavigationMenu className="lg:flex lg:items-center gap-6 hidden">
       <NavigationMenuList>
         {[
           {
-            href: 'search',
+            href: `/${locale}/search`,
             label: `${dictionary.search}`,
             Icon: Search,
           },
-          { href: 'movies', label: `${dictionary.movies}`, Icon: Film },
-          { href: 'tv', label: `${dictionary.tv}`, Icon: Tv },
-          { href: 'about', label: `${dictionary.about}`, Icon: InfoCircle },
+          {
+            href: `/${locale}/movies`,
+            label: `${dictionary.movies}`,
+            Icon: Film,
+          },
+          { href: `/${locale}/tv`, label: `${dictionary.tv}`, Icon: Tv },
+          {
+            href: `/${locale}/about`,
+            label: `${dictionary.about}`,
+            Icon: InfoCircle,
+          },
         ].map(({ href, label, Icon }) => (
           <NavigationMenuItem key={href}>
             <Link href={href} legacyBehavior passHref>
               <NavigationMenuLink
                 className={`${navigationMenuTriggerStyle()} focus:bg-foreground focus:text-secondary transition-all duration-300 hover:bg-foreground/10 ${
-                  pathname === `/${href}`
+                  pathname.split('/').slice(0, 3).join('/') === href
                     ? 'bg-foreground text-secondary'
                     : 'bg-background/0 text-foreground'
                 }`}
@@ -85,6 +94,8 @@ const LinkListMobile = ({
   isMenuOpen: boolean;
   toggleMenu: () => void;
 }) => {
+  const pathname = usePathname();
+  const locale = pathname.split('/')[1];
   return (
     <ul
       className={`lg:hidden z-10 absolute h-screen w-screen p-6 top-0 text-5xl text-foreground/70 font-bold space-y-8 left-0 right-0 flex flex-col justify-center text-opacity-80 transition-all ease-in-out duration-300 ${
@@ -96,7 +107,7 @@ const LinkListMobile = ({
     >
       <li>
         <Link
-          href="search"
+          href={`/${locale}/search`}
           onClick={toggleMenu}
           className={`font-bold flex items-center transition-all ease-in-out duration-300 ${
             isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -108,7 +119,7 @@ const LinkListMobile = ({
       </li>
       <li>
         <Link
-          href="movies"
+          href={`/${locale}/movies`}
           onClick={toggleMenu}
           className={`font-bold flex items-center transition-all ease-in-out duration-300 delay-50 ${
             isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -120,7 +131,7 @@ const LinkListMobile = ({
       </li>
       <li>
         <Link
-          href="tv"
+          href={`/${locale}/tv`}
           onClick={toggleMenu}
           className={`font-bold flex items-center transition-all ease-in-out duration-300 delay-100 ${
             isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -132,7 +143,7 @@ const LinkListMobile = ({
       </li>
       <li>
         <Link
-          href="about"
+          href={`/${locale}/about`}
           onClick={toggleMenu}
           className={`font-bold flex items-center transition-all ease-in-out duration-300 delay-150 ${
             isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -194,9 +205,9 @@ const Navbar = ({
           </Link>
           <div className="flex gap-1 items-center">
             <LanguageSwitcher dictionary={dictionary} />
+            <ModeToggle dictionary={dictionary} />
             <LinkListDesktop dictionary={dictionary} />
             <div className="flex gap-3">
-              <ModeToggle dictionary={dictionary} />
               <Button
                 variant="outline"
                 size="icon"

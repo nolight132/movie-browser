@@ -12,7 +12,7 @@ export const getDetails = async (c: Content, lang: string) => {
 
 export const getMovieDetails = async (id: number, lang: string) => {
   const response = await fetch(
-    `${BASE_URL}/movie/${id}?api_key=${TMDB_API_KEY}&include_adult=false&language=${lang}`
+    `${BASE_URL}/movie/${id}?api_key=${TMDB_API_KEY}&include_adult=false&language=${lang}&append_to_response=credits`
   );
   if (!response.ok) {
     const error = await response.json();
@@ -23,7 +23,7 @@ export const getMovieDetails = async (id: number, lang: string) => {
 
 export const getTvShowDetails = async (id: number, lang: string) => {
   const response = await fetch(
-    `${BASE_URL}/tv/${id}?api_key=${TMDB_API_KEY}&include_adult=false&language=${lang}`
+    `${BASE_URL}/tv/${id}?api_key=${TMDB_API_KEY}&include_adult=false&language=${lang}&append_to_response=credits`
   );
   if (!response.ok) {
     const error = await response.json();

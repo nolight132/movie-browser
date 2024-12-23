@@ -22,7 +22,7 @@ const Filters = ({
     <div className="flex gap-3">
       <Button variant="outline" className="sm:flex items-center hidden">
         <Filter className="mr-2" />
-        {dictionary.filters['filters-button-label']}
+        {dictionary.filters.filters_button_label}
       </Button>
       <Button
         variant={'default'}
@@ -30,7 +30,7 @@ const Filters = ({
         className="sm:flex items-center hidden"
       >
         <Delete className="mr-2" />
-        {dictionary.filters['clear-button-label']}
+        {dictionary.filters.clear_button_label}
       </Button>
 
       <Button variant="outline" className="sm:hidden">

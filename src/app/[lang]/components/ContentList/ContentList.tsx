@@ -18,7 +18,7 @@ export default function ContentList({
   }
 
   return (
-    <div className="grid grid-cols-1 max-sm:grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3 pt-5">
+    <div className="grid grid-cols-1 max-sm:grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(205px,1fr))] gap-3">
       {content.map((item) =>
         item.release_date || item.first_air_date ? (
           <ContentListItem

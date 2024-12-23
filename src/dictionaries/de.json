@@ -1,15 +1,42 @@
 {
+  "ui": {
+    "back": "Zurück",
+    "loading": "Lädt...",
+    "no_results": "Keine Ergebnisse gefunden",
+    "no_results_description": "Versuche, nach etwas anderem zu suchen.",
+    "collapse": "Zusammenklappen",
+    "expand": "Erweitern",
+    "read_more": "Mehr lesen",
+    "read_less": "Weniger lesen",
+    "time": {
+      "hours": "Stunden",
+      "hours_short": "Std",
+      "minutes": "Minuten",
+      "minutes_short": "Min",
+      "seconds": "Sekunden",
+      "seconds_short": "Sek",
+      "days": "Tage",
+      "days_short": "Tg",
+      "weeks": "Wochen",
+      "months": "Monate",
+      "months_short": "Mon",
+      "years": "Jahre",
+      "today": "Heute",
+      "yesterday": "Gestern",
+      "tomorrow": "Morgen"
+    }
+  },
   "nav": {
     "home": "Startseite",
     "movies": "Filme",
-    "tv": "Shows",
+    "tv": "Sendungen",
     "search": "Suchen",
-    "about": "Über uns",
+    "about": "Über",
     "modes": {
       "light": "Hell",
       "dark": "Dunkel",
       "system": "System",
-      "toggle": "Thema wechseln"
+      "toggle": "Thema umschalten"
     },
     "language": {
       "title": "Sprache wählen"
@@ -19,25 +46,52 @@
     "title": "Suchen nach",
     "placeholder": "Stranger Things...",
     "filters": {
-      "filters-button-label": "Filter",
-      "clear-button-label": "Löschen",
+      "filters_button_label": "Filter",
+      "clear_button_label": "Löschen",
       "all": "Alle",
       "movies": "Filme",
-      "shows": "Shows"
+      "shows": "Sendungen"
     }
   },
   "movies": {
     "title": "Beliebte Filme",
-    "description": "Hier sind einige beliebte Filme, die dir gefallen könnten."
+    "description": "Hier sind einige beliebte Filme, die dir gefallen könnten.",
+    "no_description": "Dieser Film hat keine Beschreibung, aber er ist trotzdem großartig!"
   },
   "shows": {
-    "title": "Beliebte Shows",
-    "description": "Hier sind einige beliebte Shows, die dir gefallen könnten.",
+    "title": "Beliebte Sendungen",
+    "description": "Hier sind einige beliebte Sendungen, die dir gefallen könnten.",
+    "no_description": "Diese Sendung hat keine Beschreibung, aber sie ist trotzdem großartig!",
     "seasons": "Staffeln",
-    "episodes": "Episoden"
+    "episodes": "Folgen"
   },
   "about": {
-    "title": "Über uns",
+    "title": "Über",
     "description": "bubebube"
+  },
+  "content_details": {
+    "genres": "Genres",
+    "rating": "Bewertung",
+    "release_date": "Veröffentlicht",
+    "origin_country": "Herkunftsland",
+    "duration": "Dauer",
+    "overview": "Überblick",
+    "seasons": "Staffeln",
+    "episodes": "Folgen",
+    "cast": {
+      "title": "Besetzung",
+      "person": {
+        "adult": "Erwachsener",
+        "gender": "Geschlecht",
+        "known_for_department": "Bekannt durch Abteilung",
+        "name": "Name",
+        "original_name": "Originalname",
+        "popularity": "Popularität",
+        "profile_path": "Profilpfad",
+        "credit_id": "Kredit-ID",
+        "department": "Abteilung",
+        "job": "Beruf"
+      }
+    }
   }
 }

@@ -43,7 +43,7 @@ const LanguageSwitcher = ({
 
   return (
     <Select value={selectedLang} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="border-none shadow-none">
+      <SelectTrigger className="border-none shadow-none hover:bg-foreground/10 transition-bg duration-200">
         <LanguagesIcon className="size-4" />
       </SelectTrigger>
       <SelectContent>

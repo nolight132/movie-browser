@@ -1,4 +1,31 @@
 {
+  "ui": {
+    "back": "Back",
+    "loading": "Loading...",
+    "no_results": "No results found",
+    "no_results_description": "Try searching for something else.",
+    "collapse": "Collapse",
+    "expand": "Expand",
+    "read_more": "Read more",
+    "read_less": "Read less",
+    "time": {
+      "hours": "hours",
+      "hours_short": "hr",
+      "minutes": "minutes",
+      "minutes_short": "min",
+      "seconds": "seconds",
+      "seconds_short": "sec",
+      "days": "days",
+      "days_short": "d",
+      "weeks": "weeks",
+      "months": "months",
+      "months_short": "mo",
+      "years": "years",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "tomorrow": "Tomorrow"
+    }
+  },
   "nav": {
     "home": "Home",
     "movies": "Movies",
@@ -19,8 +46,8 @@
     "title": "Search for",
     "placeholder": "Stranger Things...",
     "filters": {
-      "filters-button-label": "Filters",
-      "clear-button-label": "Clear",
+      "filters_button_label": "Filters",
+      "clear_button_label": "Clear",
       "all": "All",
       "movies": "Movies",
       "shows": "Shows"
@@ -28,16 +55,43 @@
   },
   "movies": {
     "title": "Popular movies",
-    "description": "Here are some popular movies that you might like."
+    "description": "Here are some popular movies that you might like.",
+    "no_description": "This movie has no description, but it's still great!"
   },
   "shows": {
     "title": "Popular shows",
     "description": "Here are some popular shows that you might like.",
+    "no_description": "This show has no description, but it's still great!",
     "seasons": "Seasons",
     "episodes": "Episodes"
   },
   "about": {
     "title": "About",
     "description": "bubebube"
+  },
+  "content_details": {
+    "genres": "Genres",
+    "rating": "Rating",
+    "release_date": "Release date",
+    "origin_country": "Origin country",
+    "duration": "Duration",
+    "overview": "Overview",
+    "seasons": "Seasons",
+    "episodes": "Episodes",
+    "cast": {
+      "title": "Cast",
+      "person": {
+        "adult": "Adult",
+        "gender": "Gender",
+        "known_for_department": "Known for department",
+        "name": "Name",
+        "original_name": "Original name",
+        "popularity": "Popularity",
+        "profile_path": "Profile path",
+        "credit_id": "Credit ID",
+        "department": "Department",
+        "job": "Job"
+      }
+    }
   }
 }
