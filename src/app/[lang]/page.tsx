@@ -1,4 +1,4 @@
-import ListLoading from './components/ContentList/ListLoading';
+import ListLoading from './components/Skeletons/ListLoading';
 import PageWrapper from './components/PageWrapper';
 
 export default async function Page() {

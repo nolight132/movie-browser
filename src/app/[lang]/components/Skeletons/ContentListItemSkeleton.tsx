@@ -1,5 +1,3 @@
-'use client';
-
 import { Skeleton } from '@/components/ui/skeleton'; // Assuming you have a Skeleton component
 import { Card, CardContent, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
