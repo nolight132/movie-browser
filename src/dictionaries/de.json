@@ -36,7 +36,9 @@
   },
   "shows": {
     "title": "Beliebte Shows",
-    "description": "Hier sind einige beliebte Shows, die dir gefallen könnten."
+    "description": "Hier sind einige beliebte Shows, die dir gefallen könnten.",
+    "seasons": "Staffeln",
+    "episodes": "Episoden"
   },
   "about": {
     "title": "Über uns",

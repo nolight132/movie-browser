@@ -25,9 +25,7 @@
     "filters": {
       "filters-button-label": "Filtry",
       "clear-button-label": "Wyczyść",
-      "all": "Wszystkie",
-      "movies": "Filmy",
-      "shows": "Seriale"
+      "all": "Wszystkie"
     }
   },
   "movies": {
@@ -36,7 +34,9 @@
   },
   "shows": {
     "title": "Popularne seriale",
-    "description": "Oto kilka popularnych seriali, które mogą Ci się spodobać."
+    "description": "Oto kilka popularnych seriali, które mogą Ci się spodobać.",
+    "seasons": "Sezonów",
+    "episodes": "Odcinków"
   },
   "about": {
     "title": "O nas",

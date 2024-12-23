@@ -36,7 +36,9 @@
   },
   "shows": {
     "title": "Popular shows",
-    "description": "Here are some popular shows that you might like."
+    "description": "Here are some popular shows that you might like.",
+    "seasons": "Seasons",
+    "episodes": "Episodes"
   },
   "about": {
     "title": "About",

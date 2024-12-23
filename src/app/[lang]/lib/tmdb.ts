@@ -97,7 +97,7 @@ export const getPopularTvShows = async (page: number, lang: string) => {
     return await getTopRatedTvShows(page, lang);
   }
   const response = await fetch(
-    `${BASE_URL}/tv/popular?api_key=${TMDB_API_KEY}&page=${page}&include_adult=false&language=${lang}`
+    `${BASE_URL}/discover/tv?api_key=${TMDB_API_KEY}&page=${page}&include_adult=false&language=${lang}&without_genres=16&sort_by=vote_count.desc&vote_average.gte=7`
   );
   if (!response.ok) {
     const error = await response.json();
@@ -119,7 +119,18 @@ export const getTopRatedMovies = async (page: number, lang: string) => {
 
 export const getTopRatedTvShows = async (page: number, lang: string) => {
   const response = await fetch(
-    `${BASE_URL}/tv/top_rated?api_key=${TMDB_API_KEY}&page=${page}&include_adult=false&language=${lang}`
+    `${BASE_URL}/discover/tv?api_key=${TMDB_API_KEY}&page=${page}&include_adult=false&language=${lang}&without_genres=16&sort_by=vote_count.desc&vote_average.gte=7`
+  );
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.status_message || 'Failed to search');
+  }
+  return response.json();
+};
+
+export const getTrendingTvShows = async (page: number, lang: string) => {
+  const response = await fetch(
+    `${BASE_URL}/trending/all/day?api_key=${TMDB_API_KEY}&page=${page}&include_adult=false&language=${lang}&without_genres=16`
   );
   if (!response.ok) {
     const error = await response.json();

@@ -1,4 +1,4 @@
-import { getTopRatedTvShows, searchMulti } from '@/app/[lang]/lib/tmdb';
+import { getTrendingTvShows, searchMulti } from '@/app/[lang]/lib/tmdb';
 import PageWrapper from '../components/PageWrapper';
 import dynamic from 'next/dynamic';
 import ListLoading from '../components/ContentList/ListLoading';
@@ -18,7 +18,8 @@ let content: Content[] = [];
 
 export default async function SearchPage({ params, searchParams }: Props) {
   const { lang } = await params;
-  const dictionary = (await getDictionary(lang)).search;
+  const dictionary = await getDictionary(lang);
+  const dictionarySearch = (await getDictionary(lang)).search;
 
   let { query } = (await searchParams) || '';
   if (!query) {
@@ -28,7 +29,7 @@ export default async function SearchPage({ params, searchParams }: Props) {
   console.log('query:', query);
   const data: ApiResponse = query
     ? await searchMulti(query, parseInt(page || '1', 10), lang)
-    : await getTopRatedTvShows(parseInt(page || '1', 10), lang);
+    : await getTrendingTvShows(parseInt(page || '1', 10), lang);
 
   if (data.results.length > 0) {
     content = data.results;
@@ -37,10 +38,12 @@ export default async function SearchPage({ params, searchParams }: Props) {
   return (
     <PageWrapper>
       <h1 className="text-4xl font-bold mt-10">
-        {query ? `${dictionary.title}: “${query}”` : `${dictionary.title}...`}
+        {query
+          ? `${dictionarySearch.title}: “${query}”`
+          : `${dictionarySearch.title}...`}
       </h1>
-      <SearchInput query={query} dictionary={dictionary} />
-      <ContentList content={content} />
+      <SearchInput query={query} dictionary={dictionarySearch} />
+      <ContentList content={content} dictionary={dictionary} />
       <PaginationView totalPages={data.total_pages} />
     </PageWrapper>
   );

@@ -3,8 +3,15 @@
 import { useEffect, useState } from 'react';
 import EpisodePillSkeleton from './EpisodePillSkeleton';
 import { Separator } from '@/components/ui/separator';
+import { type getDictionary } from '@/get-dictionary';
 
-export default function EpisodePill({ content }: { content: Content }) {
+export default function EpisodePill({
+  dictionary,
+  content,
+}: {
+  dictionary: Awaited<ReturnType<typeof getDictionary>>;
+  content: Content;
+}) {
   const [seasons, setSeasons] = useState<number | null>(null);
   const [episodes, setEpisodes] = useState<number | null>(null);
 
@@ -39,9 +46,13 @@ export default function EpisodePill({ content }: { content: Content }) {
   return (
     <div className="absolute top-2 left-2 flex bg-background/90 rounded-full">
       <div className="p-2 h-5 rounded-full shadow-lg text-xs flex gap-2 items-center justify-center text-foreground/90 font-semibold">
-        <div>{seasons}S</div>
+        <div>
+          {seasons} {dictionary.shows.seasons.at(0)!.toUpperCase()}
+        </div>
         <Separator orientation="vertical" className="h-2 bg-foreground/90" />
-        <div>{episodes}EP</div>
+        <div>
+          {episodes} {dictionary.shows.episodes.substring(0, 2)!.toUpperCase()}
+        </div>
       </div>
     </div>
   );

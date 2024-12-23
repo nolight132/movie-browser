@@ -4,6 +4,7 @@ import ListLoading from '../../components/ContentList/ListLoading';
 import { getPopularMovies } from '@/app/[lang]/lib/tmdb';
 import PaginationView from '@/app/[lang]/components/ContentList/PagintationView';
 import { Locale } from '@/i18n-config';
+import { getDictionary } from '@/get-dictionary';
 
 const ContentList = dynamic(
   () => import('../../components/ContentList/ContentList'),
@@ -21,6 +22,7 @@ export default async function Movies({
   page: number;
   lang: Locale;
 }) {
+  const dictionary = await getDictionary(lang);
   const data: ApiResponse = await getPopularMovies(page, lang);
 
   if (data.results.length > 0) {
@@ -29,7 +31,7 @@ export default async function Movies({
 
   return (
     <>
-      <ContentList content={content} />
+      <ContentList content={content} dictionary={dictionary} />
       <PaginationView totalPages={data.total_pages} />
     </>
   );

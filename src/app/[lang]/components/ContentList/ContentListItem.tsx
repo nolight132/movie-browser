@@ -8,8 +8,15 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 import EpisodePill from './EpisodePill';
+import { getDictionary } from '@/get-dictionary';
 
-export default function ContentListItem({ content }: { content: Content }) {
+export default async function ContentListItem({
+  content,
+  dictionary,
+}: {
+  content: Content;
+  dictionary: Awaited<ReturnType<typeof getDictionary>>;
+}) {
   const isMovie: boolean = !!content.title;
   const title = isMovie ? content.title : content.name;
   const overview = content.overview
@@ -41,7 +48,9 @@ export default function ContentListItem({ content }: { content: Content }) {
           />
         </div>
         <CardContent className="p-4">
-          {!isMovie && <EpisodePill content={content} />}
+          {!isMovie && (
+            <EpisodePill content={content} dictionary={dictionary} />
+          )}
           <div className="pb-2">
             <div className="w-full flex justify-between h-8 sm:h-6 items-center">
               <CardTitle className="max-w-4/5 h-full truncate text-base">
