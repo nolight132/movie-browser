@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "home": "Home",
+    "movies": "Movies",
+    "tv": "Shows",
+    "search": "Search",
+    "about": "About",
+    "modes": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System",
+      "toggle": "Toggle theme"
+    },
+    "language": {
+      "title": "Choose language",
+      "en": "English",
+      "ru": "Russian"
+    }
+  },
+  "search": {
+    "title": "Search for",
+    "placeholder": "Stranger Things...",
+    "filters": {
+      "filters-button-label": "Filters",
+      "clear-button-label": "Clear",
+      "all": "All",
+      "movies": "Movies",
+      "shows": "Shows"
+    }
+  },
+  "movies": {
+    "title": "Popular movies",
+    "description": "Here are some popular movies that you might like."
+  },
+  "shows": {
+    "title": "Popular shows",
+    "description": "Here are some popular shows that you might like."
+  },
+  "about": {
+    "title": "About",
+    "description": "bubebube"
+  }
+}

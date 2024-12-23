@@ -1,3 +1,5 @@
+import { Locale } from '@/i18n-config';
+
 declare global {
   interface ApiResponse {
     total_pages: number; // Total number of pages
@@ -54,7 +56,7 @@ declare global {
     }[]; // For TV shows
   }
   type Props = {
-    params: Promise<{ id?: string }>;
+    params: Promise<{ id?: string; lang: Locale }>;
     searchParams: Promise<{
       page: string;
       query?: string;
