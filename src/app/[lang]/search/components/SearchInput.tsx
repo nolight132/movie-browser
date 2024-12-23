@@ -40,7 +40,7 @@ const SearchInput = ({
   return (
     <div className="flex gap-3 items-center max-w-screen">
       <Input
-        className="max-w-80 p-2 rounded-md"
+        className="max-w-full sm:max-w-80 p-2 rounded-md"
         type="text"
         value={input}
         onChange={handleInputChange}
