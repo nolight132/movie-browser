@@ -63,7 +63,7 @@ const PaginationView = ({
         )}
         {/* Show ellipsis before the page numbers */}
         {currentPage > 4 && (
-          <PaginationItem>
+          <PaginationItem className="hidden sm:block">
             <PaginationEllipsis />
           </PaginationItem>
         )}
@@ -80,7 +80,7 @@ const PaginationView = ({
         ))}
         {/* Show ellipsis after the page numbers if necessary */}
         {totalPages > maxVisiblePages && currentPage < totalPages - 2 && (
-          <PaginationItem>
+          <PaginationItem className="hidden sm:block">
             <PaginationEllipsis />
           </PaginationItem>
         )}
