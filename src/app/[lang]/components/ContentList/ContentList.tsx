@@ -11,7 +11,7 @@ export default function ContentList({ content }: { content: Content[] }) {
   }
 
   return (
-    <div className="grid max-sm:grid-cols-[repeat(auto-fit,45%)] sm:grid-cols-[repeat(auto-fit,200px)] gap-3 pt-5 justify-center">
+    <div className="grid grid-cols-1 max-sm:grid-cols-2 sm:grid-cols-[repeat(auto-fit,200px)] gap-3 pt-5 justify-center">
       {content.map((item) =>
         item.release_date || item.first_air_date ? (
           <ContentListItem key={item.id} content={item} />

@@ -20,7 +20,7 @@
     }
   },
   "search": {
-    "title": "Suche nach",
+    "title": "Suchen nach",
     "placeholder": "Stranger Things...",
     "filters": {
       "filters-button-label": "Filter",
