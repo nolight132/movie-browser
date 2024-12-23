@@ -93,7 +93,7 @@ export const getPopularMovies = async (page: number, lang: string) => {
 };
 
 export const getPopularTvShows = async (page: number, lang: string) => {
-  if (lang === 'ru') {
+  if (lang !== 'en') {
     return await getTopRatedTvShows(page, lang);
   }
   const response = await fetch(
