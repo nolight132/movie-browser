@@ -6,7 +6,7 @@ import { i18n } from './i18n-config';
 import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 
-const locales = ['en', 'ru'];
+const locales = i18n.locales;
 
 export function getLocale(request: NextRequest): string | undefined {
   // Negotiator expects plain object so we need to transform headers

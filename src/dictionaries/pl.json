@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "home": "Strona główna",
+    "movies": "Filmy",
+    "tv": "Seriale",
+    "search": "Szukaj",
+    "about": "O nas",
+    "modes": {
+      "light": "Jasny",
+      "dark": "Ciemny",
+      "system": "Systemowy",
+      "toggle": "Zmień motyw"
+    },
+    "language": {
+      "title": "Wybierz język",
+      "en": "Angielski",
+      "ru": "Rosyjski",
+      "pl": "Polski",
+      "de": "Niemiecki"
+    }
+  },
+  "search": {
+    "title": "Szukaj",
+    "placeholder": "Stranger Things...",
+    "filters": {
+      "filters-button-label": "Filtry",
+      "clear-button-label": "Wyczyść",
+      "all": "Wszystkie",
+      "movies": "Filmy",
+      "shows": "Seriale"
+    }
+  },
+  "movies": {
+    "title": "Popularne filmy",
+    "description": "Oto kilka popularnych filmów, które mogą Ci się spodobać."
+  },
+  "shows": {
+    "title": "Popularne seriale",
+    "description": "Oto kilka popularnych seriali, które mogą Ci się spodobać."
+  },
+  "about": {
+    "title": "O nas",
+    "description": "bubebube"
+  }
+}

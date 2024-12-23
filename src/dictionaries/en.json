@@ -14,7 +14,9 @@
     "language": {
       "title": "Choose language",
       "en": "English",
-      "ru": "Russian"
+      "ru": "Russian",
+      "pl": "Polish",
+      "de": "German"
     }
   },
   "search": {

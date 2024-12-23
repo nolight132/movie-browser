@@ -186,7 +186,7 @@ const Navbar = ({
       >
         <div className="flex items-center justify-between relative z-50">
           <Link
-            href="/"
+            href="./"
             className={`font-bold transition-all ease-in-out duration-300 ${
               isMenuOpen ? 'text-2xl' : 'text-xl'
             }`}
