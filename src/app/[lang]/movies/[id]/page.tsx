@@ -2,7 +2,7 @@ import { getMovieDetails } from '@/app/[lang]/lib/tmdb';
 import { getDictionary } from '@/get-dictionary';
 import dynamic from 'next/dynamic';
 import ListLoading from '../../components/skeletons/ListLoading';
-import { Card } from '@/components/ui/card';
+import { Card, CardTitle } from '@/components/ui/card';
 import { StarSolid, Video } from '@mynaui/icons-react';
 import PageWrapper from '../../components/PageWrapper';
 import OverviewExpandable from './components/OverviewExpandable';
@@ -18,8 +18,6 @@ const MoviePage = async ({ params }: Props) => {
   const { id, lang } = await params;
   const dictionary = await getDictionary(lang);
   const movie: Content = await getMovieDetails(parseInt(id!), lang);
-  console.log(movie);
-
   const isMovie: boolean = !!movie.title;
   const title = isMovie ? movie.title : movie.name;
   const getOverview = () => {
@@ -39,6 +37,10 @@ const MoviePage = async ({ params }: Props) => {
   const hours = Math.floor(runtime! / 60);
   const minutes = runtime! % 60;
   const runtimeString = `${hours}${dictionary.ui.time.hours_short} ${minutes}${dictionary.ui.time.minutes_short}`;
+  const languageCode = movie.original_language;
+  const language = new Intl.DisplayNames(lang, {
+    type: 'language',
+  }).of(languageCode);
 
   return (
     <>
@@ -48,8 +50,8 @@ const MoviePage = async ({ params }: Props) => {
           <h1 className="text-4xl md:text-5xl sm:text-6xl font-bold">
             {title}
           </h1>
-          <main className="flex flex-col md:flex-row w-full gap-4">
-            {/* Left sidebar cards */}
+          <main className="flex flex-col md:flex-row w-full gap-3">
+            {/* Left cards */}
             <section className="w-full md:w-1/3">
               <div>
                 <Card className="p-2 pb-0 shadow-lg overflow-hidden relative">
@@ -72,7 +74,8 @@ const MoviePage = async ({ params }: Props) => {
                 </Card>
               </div>
             </section>
-            <section className="space-y-4 max-sm:flex max-sm:flex-col max-sm:flex-1 md:w-1/3 lg:w-1/2">
+            {/* Center cards */}
+            <section className="space-y-3 max-sm:flex max-sm:flex-col max-sm:flex-1 md:w-1/3 lg:w-1/2">
               <OverviewExpandable
                 overview={getOverview()}
                 dictionary={dictionary}
@@ -83,8 +86,13 @@ const MoviePage = async ({ params }: Props) => {
                 </h2>
               </Card>
             </section>
+            {/* Right cards */}
             <section className="flex flex-col gap-2 md:w-1/3">
-              <Card className="p-4 space-y-2">
+              <Card className="p-6 space-y-3">
+                <CardTitle className="text-3xl">
+                  {dictionary.content_details.details}
+                </CardTitle>
+                <Separator />
                 <div className="flex w-full justify-between">
                   <span className="text-lg w-2/3 truncate">
                     {dictionary.content_details.rating}
@@ -116,6 +124,26 @@ const MoviePage = async ({ params }: Props) => {
                     <p className="text-md text-muted-foreground">
                       {runtimeString}
                     </p>
+                  </div>
+                </div>
+                <Separator />
+                <div className="flex w-full justify-between">
+                  <span className="text-lg truncate">
+                    {dictionary.content_details.genres}
+                  </span>
+                  <div className="flex items-center">
+                    <p className="text-md text-muted-foreground">
+                      {movie.genres.map((genre) => genre.name).join(', ')}
+                    </p>
+                  </div>
+                </div>
+                <Separator />
+                <div className="flex w-full justify-between">
+                  <span className="text-lg truncate">
+                    {dictionary.content_details.original_language}
+                  </span>
+                  <div className="flex items-center">
+                    <p className="text-md text-muted-foreground">{language}</p>
                   </div>
                 </div>
               </Card>

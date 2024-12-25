@@ -27,6 +27,8 @@ declare global {
     tagline?: string;
     number_of_seasons?: number; // For TV shows
     number_of_episodes?: number; // For TV shows
+    revenue?: number;
+    budget?: number;
     networks?: {
       id: number;
       name: string;
