@@ -1,7 +1,7 @@
 import { getTrendingTvShows, searchMulti } from '@/app/[lang]/lib/tmdb';
 import PageWrapper from '../components/PageWrapper';
 import dynamic from 'next/dynamic';
-import ListLoading from '../components/skeletons/ListLoading';
+import ListLoading from '../components/Skeletons/ListLoading';
 import PaginationView from '../components/ContentList/PagintationView';
 import { getDictionary } from '@/get-dictionary';
 

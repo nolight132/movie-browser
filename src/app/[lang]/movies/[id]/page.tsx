@@ -1,7 +1,7 @@
 import { getMovieDetails } from '@/app/[lang]/lib/tmdb';
 import { getDictionary } from '@/get-dictionary';
 import dynamic from 'next/dynamic';
-import ListLoading from '../../components/skeletons/ListLoading';
+import ListLoading from '../../components/Skeletons/ListLoading';
 import { Card, CardTitle } from '@/components/ui/card';
 import { StarSolid, Video } from '@mynaui/icons-react';
 import PageWrapper from '../../components/PageWrapper';
@@ -10,7 +10,7 @@ import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 
 const ContentBanner = dynamic(
-  () => import('../../components/shared/ContentBanner'),
+  () => import('../../components/Shared/ContentBanner'),
   { loading: () => <ListLoading className="h-2/5 absolute" /> }
 );
 

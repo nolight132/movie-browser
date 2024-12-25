@@ -1,6 +1,6 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import ListLoading from '../../components/skeletons/ListLoading';
+import ListLoading from '../../components/Skeletons/ListLoading';
 import { getPopularMovies } from '@/app/[lang]/lib/tmdb';
 import PaginationView from '@/app/[lang]/components/ContentList/PagintationView';
 import { Locale } from '@/i18n-config';
