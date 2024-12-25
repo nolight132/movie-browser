@@ -181,16 +181,16 @@ const Navbar = ({
   return (
     <>
       <div
-        className={`fixed z-40 w-screen h-screen bg-background/50 transition-all ease-in-out duration-300 ${
+        className={`fixed z-40 w-screen h-screen bg-background/50 transition-backround ease-in-out duration-300 ${
           isMenuOpen
             ? 'opacity-100 backdrop-blur-md'
             : 'opacity-0 pointer-events-none'
         }`}
       />
       <nav
-        className={`fixed top-0 left-0 right-0 w-screen h-18 z-50 p-4 border-b-[1px] border-muted-foreground/20 transition-all ease-in-out duration-300 ${
+        className={`fixed top-0 left-0 right-0 w-screen h-18 z-50 p-4 border-b-[1px] border-muted-foreground/20 transition-backround ease-in-out duration-300 ${
           isMenuOpen
-            ? 'shadow-none backdrop-blur-none bg-background/0'
+            ? 'shadow-none backdrop-blur-none bg-background/0 border-none'
             : 'shadow-sm backdrop-blur-md bg-background/50'
         }`}
       >

@@ -1,14 +1,14 @@
 import { getTrendingTvShows, searchMulti } from '@/app/[lang]/lib/tmdb';
 import PageWrapper from '../components/PageWrapper';
 import dynamic from 'next/dynamic';
-import ListLoading from '../components/Skeletons/ListLoading';
-import PaginationView from '../components/ContentList/PagintationView';
+import ListLoading from '../components/skeletons/ListLoading';
+import PaginationView from '../components/contentList/PagintationView';
 import { getDictionary } from '@/get-dictionary';
 
 const SearchInput = dynamic(() => import('./components/SearchInput'));
 
 const ContentList = dynamic(
-  () => import('../components/ContentList/ContentList'),
+  () => import('../components/contentList/ContentList'),
   {
     loading: () => <ListLoading />,
   }

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardTitle } from '@/components/ui/card';
 import { type getDictionary } from '@/get-dictionary';
 import { ChevronDoubleDown, ChevronDoubleUp } from '@mynaui/icons-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const OverviewExpandable = ({
   overview,
@@ -14,8 +14,15 @@ const OverviewExpandable = ({
   dictionary: Awaited<ReturnType<typeof getDictionary>>;
 }) => {
   const [expanded, setExpanded] = useState(false);
-  useEffect(() => {}, [expanded]);
-  const shouldExpand = overview.length > 210;
+  const [shouldExpand, setShouldExpand] = useState(false);
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (textRef.current) {
+      const { scrollHeight, clientHeight } = textRef.current;
+      setShouldExpand(scrollHeight > clientHeight);
+    }
+  }, [overview]);
 
   return (
     <Card className="p-6 space-y-3">
@@ -25,6 +32,7 @@ const OverviewExpandable = ({
       <div>
         <div className="relative">
           <p
+            ref={textRef}
             className={`text-lg text-muted-foreground overflow-hidden transition-[max-height] duration-200 ${
               expanded ? 'max-h-[9999px]' : 'max-h-[120px] sm:max-h-[160px]'
             }`}

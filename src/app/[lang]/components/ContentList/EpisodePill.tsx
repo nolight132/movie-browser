@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import EpisodePillSkeleton from '../Skeletons/EpisodePillSkeleton';
+import EpisodePillSkeleton from '../skeletons/EpisodePillSkeleton';
 import { Separator } from '@/components/ui/separator';
 import { type getDictionary } from '@/get-dictionary';
 

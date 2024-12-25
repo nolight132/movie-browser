@@ -1,13 +1,13 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import ListLoading from '../../components/Skeletons/ListLoading';
+import ListLoading from '../../components/skeletons/ListLoading';
 import { getPopularTvShows } from '@/app/[lang]/lib/tmdb';
-import PaginationView from '@/app/[lang]/components/ContentList/PagintationView';
+import PaginationView from '@/app/[lang]/components/contentList/PagintationView';
 import { Locale } from '@/i18n-config';
 import { getDictionary } from '@/get-dictionary';
 
 const ContentList = dynamic(
-  () => import('../../components/ContentList/ContentList'),
+  () => import('../../components/contentList/ContentList'),
   {
     loading: () => <ListLoading />,
   }

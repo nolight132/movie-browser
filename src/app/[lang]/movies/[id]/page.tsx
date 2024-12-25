@@ -1,7 +1,7 @@
 import { getMovieDetails } from '@/app/[lang]/lib/tmdb';
 import { getDictionary } from '@/get-dictionary';
 import dynamic from 'next/dynamic';
-import ListLoading from '../../components/Skeletons/ListLoading';
+import ListLoading from '../../components/skeletons/ListLoading';
 import { Card } from '@/components/ui/card';
 import { StarSolid, Video } from '@mynaui/icons-react';
 import PageWrapper from '../../components/PageWrapper';
@@ -10,7 +10,7 @@ import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 
 const ContentBanner = dynamic(
-  () => import('../../components/Shared/ContentBanner'),
+  () => import('../../components/shared/ContentBanner'),
   { loading: () => <ListLoading className="h-2/5 absolute" /> }
 );
 
@@ -45,12 +45,14 @@ const MoviePage = async ({ params }: Props) => {
       <ContentBanner content={movie} />
       <PageWrapper>
         <div className="top-80 w-full space-y-8 mt-24">
-          <h1 className="text-5xl sm:text-6xl font-bold">{title}</h1>
+          <h1 className="text-4xl md:text-5xl sm:text-6xl font-bold">
+            {title}
+          </h1>
           <main className="flex flex-col md:flex-row w-full gap-4">
             {/* Left sidebar cards */}
-            <section className="w-full md:w-1/4">
+            <section className="w-full md:w-1/3">
               <div>
-                <Card className="p-2 shadow-lg overflow-hidden relative">
+                <Card className="p-2 pb-0 shadow-lg overflow-hidden relative">
                   <Image
                     src={`https://image.tmdb.org/t/p/original${movie.poster_path!}`}
                     alt={title!}
@@ -61,7 +63,7 @@ const MoviePage = async ({ params }: Props) => {
                   />
                   <div className="w-full h-16 bg-background/80">
                     <div className="flex items-center justify-center h-full gap-2">
-                      <p className="text-3xl font-semibold text-foreground">
+                      <p className="text-2xl font-semibold text-foreground">
                         {dictionary.content_details.trailer}
                       </p>
                       <Video className="size-9" />
@@ -70,7 +72,7 @@ const MoviePage = async ({ params }: Props) => {
                 </Card>
               </div>
             </section>
-            <section className="space-y-4 md:w-1/2">
+            <section className="space-y-4 max-sm:flex max-sm:flex-col max-sm:flex-1 md:w-1/3 lg:w-1/2">
               <OverviewExpandable
                 overview={getOverview()}
                 dictionary={dictionary}
@@ -81,7 +83,7 @@ const MoviePage = async ({ params }: Props) => {
                 </h2>
               </Card>
             </section>
-            <section className="flex flex-col gap-2 md:w-1/4">
+            <section className="flex flex-col gap-2 md:w-1/3">
               <Card className="p-4 space-y-2">
                 <div className="flex w-full justify-between">
                   <span className="text-lg w-2/3 truncate">
