@@ -57,11 +57,9 @@ const MoviePage = async ({ params }: Props) => {
       <PageWrapper>
         <div className="top-80 w-full space-y-8 mt-24">
           <div>
-            <h1 className="text-4xl md:text-5xl sm:text-6xl font-bold">
-              {title}
-            </h1>
+            <h1 className="text-4xl md:text-5xl font-bold">{title}</h1>
             <h2 className="sm:text-lg font-semibold">
-              ${dictionary.content_details.original}: &quot;{originalTitle}
+              {dictionary.content_details.original}: &quot;{originalTitle}
               &quot;
             </h2>
           </div>
@@ -90,7 +88,7 @@ const MoviePage = async ({ params }: Props) => {
               </div>
             </section>
             {/* Center cards */}
-            <section className="space-y-3 max-sm:flex max-sm:flex-col max-sm:flex-1 md:w-1/3 lg:w-1/2">
+            <section className="space-y-3 max-md:flex max-md:flex-col max-md:flex-1 md:w-1/3 lg:w-1/2">
               <OverviewExpandable
                 overview={getOverview()}
                 dictionary={dictionary}
@@ -102,7 +100,7 @@ const MoviePage = async ({ params }: Props) => {
               </Card>
             </section>
             {/* Right cards */}
-            <section className="flex flex-col gap-2 lg:w-1/4">
+            <section className="flex flex-col gap-2 md:w-1/4">
               <DetailsCard
                 movie={movie}
                 releaseDate={releaseDate}
