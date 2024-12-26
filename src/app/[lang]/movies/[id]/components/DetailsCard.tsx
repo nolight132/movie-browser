@@ -34,7 +34,7 @@ const DetailsCard = ({
       <Separator />
       <DetailsRow>
         <span>{dictionary.content_details.rating}</span>
-        <span className="flex items-center">
+        <span className="flex items-center justify-end">
           <StarSolid className="size-5 mr-1 text-yellow-400" />
           <span>{movie.vote_average.toString().substring(0, 3)}</span>
         </span>

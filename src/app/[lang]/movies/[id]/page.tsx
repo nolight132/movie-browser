@@ -3,11 +3,10 @@ import { getDictionary } from '@/get-dictionary';
 import dynamic from 'next/dynamic';
 import ListLoading from '../../components/Skeletons/ListLoading';
 import { Card } from '@/components/ui/card';
-import { Video } from '@mynaui/icons-react';
 import PageWrapper from '../../components/PageWrapper';
 import OverviewExpandable from './components/OverviewExpandable';
-import Image from 'next/image';
 import DetailsCard from './components/DetailsCard';
+import PosterCard from '../../components/Shared/PosterCard';
 
 const ContentBanner = dynamic(
   () => import('../../components/Shared/ContentBanner'),
@@ -66,26 +65,11 @@ const MoviePage = async ({ params }: Props) => {
           <main className="flex flex-col md:flex-row w-full gap-3">
             {/* Left cards */}
             <section className="w-full md:w-1/3">
-              <div>
-                <Card className="p-2 pb-0 shadow-lg overflow-hidden relative">
-                  <Image
-                    src={`https://image.tmdb.org/t/p/original${movie.poster_path!}`}
-                    alt={title!}
-                    priority={true}
-                    width={3}
-                    height={2}
-                    className="rounded-[8px] w-full h-full object-cover overflow-hidden pointer-events-none select-none"
-                  />
-                  <div className="w-full h-16 bg-background/80">
-                    <div className="flex items-center justify-center h-full gap-2">
-                      <p className="text-2xl font-semibold text-foreground">
-                        {dictionary.content_details.trailer}
-                      </p>
-                      <Video className="size-9" />
-                    </div>
-                  </div>
-                </Card>
-              </div>
+              <PosterCard
+                title={title!}
+                content={movie}
+                dictionary={dictionary}
+              />
             </section>
             {/* Center cards */}
             <section className="space-y-3 max-md:flex max-md:flex-col max-md:flex-1 md:w-1/3 lg:w-1/2">
