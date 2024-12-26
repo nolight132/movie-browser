@@ -8,6 +8,7 @@ import PageWrapper from '../../components/PageWrapper';
 import OverviewExpandable from './components/OverviewExpandable';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
+import DetailsCard from './components/DetailsCard';
 
 const ContentBanner = dynamic(
   () => import('../../components/Shared/ContentBanner'),
@@ -20,6 +21,7 @@ const MoviePage = async ({ params }: Props) => {
   const movie: Content = await getMovieDetails(parseInt(id!), lang);
   const isMovie: boolean = !!movie.title;
   const title = isMovie ? movie.title : movie.name;
+  const originalTitle = isMovie ? movie.original_title : movie.original_name;
   const getOverview = () => {
     if (movie.overview) {
       return movie.overview;
@@ -36,20 +38,33 @@ const MoviePage = async ({ params }: Props) => {
   const runtime = movie.runtime;
   const hours = Math.floor(runtime! / 60);
   const minutes = runtime! % 60;
-  const runtimeString = `${hours}${dictionary.ui.time.hours_short} ${minutes}${dictionary.ui.time.minutes_short}`;
+  const duration = `${hours}${dictionary.ui.time.hours_short} ${minutes}${dictionary.ui.time.minutes_short}`;
   const languageCode = movie.original_language;
-  const language = new Intl.DisplayNames(lang, {
+  const movieLanguage = new Intl.DisplayNames(lang, {
     type: 'language',
   }).of(languageCode);
+  const numberStyle = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+  const budget = numberStyle.format(movie.budget!);
+  const revenue = numberStyle.format(movie.revenue!);
 
   return (
     <>
       <ContentBanner content={movie} />
       <PageWrapper>
         <div className="top-80 w-full space-y-8 mt-24">
-          <h1 className="text-4xl md:text-5xl sm:text-6xl font-bold">
-            {title}
-          </h1>
+          <div>
+            <h1 className="text-4xl md:text-5xl sm:text-6xl font-bold">
+              {title}
+            </h1>
+            <h2 className="sm:text-lg font-semibold">
+              {dictionary.content_details.original}: "{originalTitle}"
+            </h2>
+          </div>
           <main className="flex flex-col md:flex-row w-full gap-3">
             {/* Left cards */}
             <section className="w-full md:w-1/3">
@@ -87,66 +102,16 @@ const MoviePage = async ({ params }: Props) => {
               </Card>
             </section>
             {/* Right cards */}
-            <section className="flex flex-col gap-2 md:w-1/3">
-              <Card className="p-6 space-y-3">
-                <CardTitle className="text-3xl">
-                  {dictionary.content_details.details}
-                </CardTitle>
-                <Separator />
-                <div className="flex w-full justify-between">
-                  <span className="text-lg w-2/3 truncate">
-                    {dictionary.content_details.rating}
-                  </span>
-                  <div className="flex items-center">
-                    <StarSolid className="size-5 mr-1 text-yellow-400" />
-                    <p className="text-md text-muted-foreground">
-                      {movie.vote_average.toString().substring(0, 3)}
-                    </p>
-                  </div>
-                </div>
-                <Separator />
-                <div className="flex w-full justify-between">
-                  <span className="text-lg w-2/3 truncate">
-                    {dictionary.content_details.release_date}
-                  </span>
-                  <div className="flex items-center">
-                    <p className="text-md text-muted-foreground">
-                      {releaseDate}
-                    </p>
-                  </div>
-                </div>
-                <Separator />
-                <div className="flex w-full justify-between">
-                  <span className="text-lg w-2/3 truncate">
-                    {dictionary.content_details.duration}
-                  </span>
-                  <div className="flex items-center">
-                    <p className="text-md text-muted-foreground">
-                      {runtimeString}
-                    </p>
-                  </div>
-                </div>
-                <Separator />
-                <div className="flex w-full justify-between">
-                  <span className="text-lg truncate">
-                    {dictionary.content_details.genres}
-                  </span>
-                  <div className="flex items-center">
-                    <p className="text-md text-muted-foreground">
-                      {movie.genres.map((genre) => genre.name).join(', ')}
-                    </p>
-                  </div>
-                </div>
-                <Separator />
-                <div className="flex w-full justify-between">
-                  <span className="text-lg truncate">
-                    {dictionary.content_details.original_language}
-                  </span>
-                  <div className="flex items-center">
-                    <p className="text-md text-muted-foreground">{language}</p>
-                  </div>
-                </div>
-              </Card>
+            <section className="flex flex-col gap-2 lg:w-1/4">
+              <DetailsCard
+                movie={movie}
+                releaseDate={releaseDate}
+                duration={duration}
+                movieLanguage={movieLanguage!}
+                dictionary={dictionary}
+                budget={budget}
+                revenue={revenue}
+              />
             </section>
           </main>
         </div>

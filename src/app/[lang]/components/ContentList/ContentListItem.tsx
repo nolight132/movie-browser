@@ -33,23 +33,31 @@ export default async function ContentListItem({
     : content.first_air_date?.substring(0, 4);
 
   return (
-    <Card className="relative lg:hover:scale-105 transition-all max-w-[22rem]">
+    <Card className="relative lg:hover:scale-105 transition-all max-w-[22rem] motion-preset-fade">
       <Link
         href={isMovie ? `movies/${content.id}` : `tv/${content.id}`}
         className="block"
       >
         <div className="w-full aspect-[4/5] relative">
-          <Image
-            className="w-full h-full object-cover pointer-events-none select-none rounded-t-lg"
-            src={
-              content.poster_path
-                ? `https://image.tmdb.org/t/p/w500/${content.poster_path}`
-                : '/placeholder.jpg'
-            }
-            alt={title!}
-            width={500}
-            height={280}
-          />
+          {content.poster_path || content.backdrop_path ? (
+            <Image
+              className="w-full h-full motion-preset-fade object-cover pointer-events-none select-none rounded-t-lg"
+              src={
+                content.poster_path
+                  ? `https://image.tmdb.org/t/p/w500/${content.poster_path}`
+                  : `https://image.tmdb.org/t/p/w500/${content.backdrop_path}`
+              }
+              alt={title!}
+              width={500}
+              height={280}
+            />
+          ) : (
+            <div className="w-full h-full flex justify-center items-center bg-background rounded-t-lg">
+              <p className="text-center text-muted-foreground">
+                {dictionary.ui.no_results_description}
+              </p>
+            </div>
+          )}
         </div>
         <CardContent className="p-4">
           {!isMovie && (
