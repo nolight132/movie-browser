@@ -2,12 +2,11 @@ import { getMovieDetails } from '@/app/[lang]/lib/tmdb';
 import { getDictionary } from '@/get-dictionary';
 import dynamic from 'next/dynamic';
 import ListLoading from '../../components/Skeletons/ListLoading';
-import { Card, CardTitle } from '@/components/ui/card';
-import { StarSolid, Video } from '@mynaui/icons-react';
+import { Card } from '@/components/ui/card';
+import { Video } from '@mynaui/icons-react';
 import PageWrapper from '../../components/PageWrapper';
 import OverviewExpandable from './components/OverviewExpandable';
 import Image from 'next/image';
-import { Separator } from '@/components/ui/separator';
 import DetailsCard from './components/DetailsCard';
 
 const ContentBanner = dynamic(
@@ -62,7 +61,8 @@ const MoviePage = async ({ params }: Props) => {
               {title}
             </h1>
             <h2 className="sm:text-lg font-semibold">
-              {dictionary.content_details.original}: "{originalTitle}"
+              ${dictionary.content_details.original}: &quot;{originalTitle}
+              &quot;
             </h2>
           </div>
           <main className="flex flex-col md:flex-row w-full gap-3">

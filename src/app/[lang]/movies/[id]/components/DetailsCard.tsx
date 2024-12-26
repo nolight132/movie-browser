@@ -4,7 +4,6 @@ import { Card, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { type getDictionary } from '@/get-dictionary';
 import { StarSolid } from '@mynaui/icons-react';
-import { useState } from 'react';
 import DetailsRow from './DetailsRow';
 
 const DetailsCard = ({
@@ -24,9 +23,9 @@ const DetailsCard = ({
   budget: string;
   revenue: string;
 }) => {
-  const [isGenresExpanded, setIsGenresExpanded] = useState(false);
+  // const [isGenresExpanded, setIsGenresExpanded] = useState(false);
+  // const toggleGenres = () => setIsGenresExpanded(!isGenresExpanded);
 
-  const toggleGenres = () => setIsGenresExpanded(!isGenresExpanded);
   return (
     <Card className="p-6 space-y-3">
       <CardTitle className="text-3xl">
