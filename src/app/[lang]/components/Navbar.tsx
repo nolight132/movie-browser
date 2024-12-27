@@ -68,7 +68,7 @@ const LinkListDesktop = ({
           <NavigationMenuItem key={href}>
             <Link href={href} legacyBehavior passHref>
               <NavigationMenuLink
-                className={`${navigationMenuTriggerStyle()} focus:bg-foreground focus:text-secondary transition-all duration-300 hover:bg-foreground/10 ${
+                className={`${navigationMenuTriggerStyle()} focus:bg-foreground focus:text-secondary transition-background duration-300 hover:bg-foreground/10 ${
                   pathname.split('/').slice(0, 3).join('/') === href
                     ? 'bg-foreground text-secondary'
                     : 'bg-background/0 text-foreground'
@@ -98,7 +98,7 @@ const LinkListMobile = ({
   const locale = pathname.split('/')[1];
   return (
     <ul
-      className={`lg:hidden z-10 absolute h-screen w-screen p-6 top-0 text-5xl text-foreground/70 font-bold space-y-8 left-0 right-0 flex flex-col justify-center text-opacity-80 transition-all ease-in-out duration-300 ${
+      className={`lg:hidden z-10 absolute h-screen w-screen p-6 top-0 text-5xl text-foreground/70 font-bold space-y-8 left-0 right-0 flex flex-col justify-center text-opacity-80 transition ease-in-out duration-300 ${
         isMenuOpen
           ? 'opacity-100 translate-y-0'
           : 'opacity-0 translate-y-4 pointer-events-none'
@@ -109,7 +109,7 @@ const LinkListMobile = ({
         <Link
           href={`/${locale}/search`}
           onClick={toggleMenu}
-          className={`font-bold flex items-center transition-all ease-in-out duration-300 ${
+          className={`font-bold flex items-center transition-opacity ease-in-out duration-300 ${
             isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
@@ -121,7 +121,7 @@ const LinkListMobile = ({
         <Link
           href={`/${locale}/movies`}
           onClick={toggleMenu}
-          className={`font-bold flex items-center transition-all ease-in-out duration-300 delay-50 ${
+          className={`font-bold flex items-center transition-opacity ease-in-out duration-300 delay-50 ${
             isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
@@ -133,7 +133,7 @@ const LinkListMobile = ({
         <Link
           href={`/${locale}/tv`}
           onClick={toggleMenu}
-          className={`font-bold flex items-center transition-all ease-in-out duration-300 delay-100 ${
+          className={`font-bold flex items-center transition-opacity ease-in-out duration-300 delay-100 ${
             isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
@@ -145,7 +145,7 @@ const LinkListMobile = ({
         <Link
           href={`/${locale}/about`}
           onClick={toggleMenu}
-          className={`font-bold flex items-center transition-all ease-in-out duration-300 delay-150 ${
+          className={`font-bold flex items-center transition-opacity ease-in-out duration-300 delay-150 ${
             isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
@@ -181,14 +181,14 @@ const Navbar = ({
   return (
     <>
       <div
-        className={`fixed z-40 w-screen h-screen bg-background/50 transition-backround ease-in-out duration-300 ${
+        className={`fixed z-40 w-screen h-screen bg-background/50 transition ease-in-out duration-300 ${
           isMenuOpen
             ? 'opacity-100 backdrop-blur-md'
             : 'opacity-0 pointer-events-none'
         }`}
       />
       <nav
-        className={`fixed top-0 left-0 right-0 w-screen h-18 z-50 p-4 border-b-[1px] border-muted-foreground/20 transition-backround ease-in-out duration-300 ${
+        className={`fixed top-0 left-0 right-0 w-screen h-18 z-50 p-4 border-b-[1px] border-muted-foreground/20 transition ease-in-out duration-300 ${
           isMenuOpen
             ? 'shadow-none backdrop-blur-none bg-background/0 border-none'
             : 'shadow-sm backdrop-blur-md bg-background/50'
@@ -197,21 +197,21 @@ const Navbar = ({
         <div className="flex items-center justify-between relative z-50">
           <Link
             href="./"
-            className={`font-bold transition-all ease-in-out duration-300 ${
+            className={`font-bold transition-text ease-in-out duration-300 ${
               isMenuOpen ? 'text-2xl' : 'text-xl'
             }`}
           >
             Movie Browser
           </Link>
-          <div className="flex gap-4 items-center">
+          <div className="flex space-x-4 items-center">
             <LanguageSwitcher dictionary={dictionary} />
             <ModeToggle dictionary={dictionary} />
             <LinkListDesktop dictionary={dictionary} />
-            <div className="flex gap-4">
+            <div className="flex gap-4 lg:hidden">
               <Button
                 variant="outline"
                 size="icon"
-                className="lg:hidden block p-2 bg-background/20"
+                className="block p-2 bg-background/20"
                 onClick={toggleMenu}
                 aria-label="Toggle Menu"
               >

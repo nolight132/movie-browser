@@ -13,8 +13,6 @@ const ContentList = dynamic(
   }
 );
 
-let content: Content[];
-
 export default async function Movies({
   page,
   lang,
@@ -25,13 +23,9 @@ export default async function Movies({
   const dictionary = await getDictionary(lang);
   const data: ApiResponse = await getPopularMovies(page, lang);
 
-  if (data.results.length > 0) {
-    content = data.results;
-  }
-
   return (
     <>
-      <ContentList content={content} dictionary={dictionary} />
+      <ContentList content={data.results} dictionary={dictionary} />
       <PaginationView totalPages={data.total_pages} />
     </>
   );

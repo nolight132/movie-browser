@@ -4,11 +4,9 @@ import PageWrapper from '../components/PageWrapper';
 import { getDictionary } from '@/get-dictionary';
 
 export default async function MoviesPage({ params, searchParams }: Props) {
-  // Await the promises to resolve them
   const resolvedParams = await params;
   const resolvedSearchParams = await searchParams;
 
-  // Destructure the resolved values
   const { page } = resolvedSearchParams;
   const { lang } = resolvedParams;
   const dictionary = await getDictionary(lang);
