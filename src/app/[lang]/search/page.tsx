@@ -1,22 +1,15 @@
 import { getTrendingTvShows, searchMulti } from '@/app/[lang]/lib/tmdb';
 import PageWrapper from '../components/PageWrapper';
-import dynamic from 'next/dynamic';
-import ListLoading from '../components/Skeletons/ListLoading';
+import ListLoading from '../loading';
 import PaginationView from '../components/ContentList/PagintationView';
 import { getDictionary } from '@/get-dictionary';
-
-const SearchInput = dynamic(() => import('./components/SearchInput'));
-
-const ContentList = dynamic(
-  () => import('../components/ContentList/ContentList'),
-  {
-    loading: () => <ListLoading />,
-  }
-);
+import { Suspense } from 'react';
+import SearchInput from './components/SearchInput';
+import ContentList from '../components/ContentList/ContentList';
 
 let content: Content[] = [];
 
-export default async function SearchPage({ params, searchParams }: Props) {
+const SearchPage = async ({ params, searchParams }: Props) => {
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
   const dictionarySearch = (await getDictionary(lang)).search;
@@ -46,5 +39,13 @@ export default async function SearchPage({ params, searchParams }: Props) {
       <ContentList content={content} dictionary={dictionary} />
       <PaginationView totalPages={data.total_pages} />
     </PageWrapper>
+  );
+};
+
+export default function SuspenseShowsPage(props: Props) {
+  return (
+    <Suspense fallback={<ListLoading className="h-screen" />}>
+      <SearchPage {...props} />
+    </Suspense>
   );
 }

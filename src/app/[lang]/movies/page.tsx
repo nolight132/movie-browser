@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Movies from './components/Movies';
 import PageWrapper from '../components/PageWrapper';
 import { getDictionary } from '@/get-dictionary';
+import ListLoading from '../loading';
 
-export default async function MoviesPage({ params, searchParams }: Props) {
+const MoviesPage = async ({ params, searchParams }: Props) => {
   const resolvedParams = await params;
   const resolvedSearchParams = await searchParams;
 
@@ -22,5 +23,13 @@ export default async function MoviesPage({ params, searchParams }: Props) {
       </div>
       <Movies page={pageInt} lang={lang} />
     </PageWrapper>
+  );
+};
+
+export default function SuspenseMoviePage(props: Props) {
+  return (
+    <Suspense fallback={<ListLoading className="h-screen" />}>
+      <MoviesPage {...props} />
+    </Suspense>
   );
 }

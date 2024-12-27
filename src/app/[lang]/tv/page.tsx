@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Shows from './components/Shows';
 import PageWrapper from '../components/PageWrapper';
 import { getDictionary } from '@/get-dictionary';
+import ListLoading from '../loading';
 
-export default async function ShowsPage({ params, searchParams }: Props) {
+const ShowsPage = async ({ params, searchParams }: Props) => {
   const resolvedParams = await params;
   const resolvedSearchParams = await searchParams;
 
@@ -15,12 +16,20 @@ export default async function ShowsPage({ params, searchParams }: Props) {
   return (
     <PageWrapper>
       <div>
-        <h1 className="mt-10 text-4xl font-bold">{dictionary.shows.title}</h1>
+        <h1 className="mt-10 text-4xl font-bold">{dictionary.movies.title}</h1>
         <p className="text-muted-foreground mt-4">
-          {dictionary.shows.description}
+          {dictionary.movies.description}
         </p>
       </div>
       <Shows page={pageInt} lang={lang} />
     </PageWrapper>
+  );
+};
+
+export default function SuspenseShowsPage(props: Props) {
+  return (
+    <Suspense fallback={<ListLoading className="h-screen" />}>
+      <ShowsPage {...props} />
+    </Suspense>
   );
 }

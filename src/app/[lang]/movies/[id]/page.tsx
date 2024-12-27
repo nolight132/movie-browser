@@ -1,17 +1,13 @@
 import { getMovieDetails } from '@/app/[lang]/lib/tmdb';
 import { getDictionary } from '@/get-dictionary';
-import dynamic from 'next/dynamic';
-import ListLoading from '../../components/Skeletons/ListLoading';
+import { Suspense } from 'react';
+import ListLoading from '../../loading'; // Your loading skeleton
 import { Card } from '@/components/ui/card';
 import PageWrapper from '../../components/PageWrapper';
-import OverviewExpandable from './components/OverviewExpandable';
 import DetailsCard from './components/DetailsCard';
 import PosterCard from '../../components/Shared/PosterCard';
-
-const ContentBanner = dynamic(
-  () => import('../../components/Shared/ContentBanner'),
-  { loading: () => <ListLoading className="h-2/5 absolute" /> }
-);
+import ContentBanner from '../../components/Shared/ContentBanner';
+import OverviewExpandable from './components/OverviewExpandable';
 
 const MoviePage = async ({ params }: Props) => {
   const { id, lang } = await params;
@@ -102,4 +98,10 @@ const MoviePage = async ({ params }: Props) => {
   );
 };
 
-export default MoviePage;
+export default function SuspenseMoviePage(props: Props) {
+  return (
+    <Suspense fallback={<ListLoading className="h-screen" />}>
+      <MoviePage {...props} />
+    </Suspense>
+  );
+}
