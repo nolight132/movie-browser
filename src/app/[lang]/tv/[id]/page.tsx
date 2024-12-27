@@ -1,4 +1,3 @@
-import { getMovieDetails } from '@/app/[lang]/lib/tmdb';
 import { getDictionary } from '@/get-dictionary';
 import { Suspense } from 'react';
 import ListLoading from '../../loading'; // Your loading skeleton
@@ -8,11 +7,12 @@ import DetailsCard from './components/DetailsCard';
 import PosterCard from '../../components/Shared/PosterCard';
 import ContentBanner from '../../components/Shared/ContentBanner';
 import OverviewExpandable from './components/OverviewExpandable';
+import { getTvShowDetails } from '../../lib/tmdb';
 
 const MoviePage = async ({ params }: Props) => {
   const { id, lang } = await params;
   const dictionary = await getDictionary(lang);
-  const movie: Content = await getMovieDetails(parseInt(id!), lang);
+  const movie: Content = await getTvShowDetails(parseInt(id!), lang);
   const isMovie: boolean = !!movie.title;
   const title = isMovie ? movie.title : movie.name;
   const originalTitle = isMovie ? movie.original_title : movie.original_name;
