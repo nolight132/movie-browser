@@ -16,9 +16,9 @@ const ShowsPage = async ({ params, searchParams }: Props) => {
   return (
     <PageWrapper>
       <div>
-        <h1 className="mt-10 text-4xl font-bold">{dictionary.movies.title}</h1>
+        <h1 className="mt-10 text-4xl font-bold">{dictionary.shows.title}</h1>
         <p className="text-muted-foreground mt-4">
-          {dictionary.movies.description}
+          {dictionary.shows.description}
         </p>
       </div>
       <Shows page={pageInt} lang={lang} />
