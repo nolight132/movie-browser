@@ -59,9 +59,9 @@
     "no_description": "Ten film nie ma opisu, ale nadal jest świetny!"
   },
   "shows": {
-    "title": "Popularne programy",
-    "description": "Oto kilka popularnych programów, które mogą Ci się spodobać.",
-    "no_description": "Ten program nie ma opisu, ale nadal jest świetny!",
+    "title": "Popularne seriale",
+    "description": "Oto kilka popularnych serialów, które mogą Ci się spodobać.",
+    "no_description": "Ten serial nie ma opisu, ale i tak jest świetny!",
     "seasons": "Sezony",
     "episodes": "Odcinki"
   },
