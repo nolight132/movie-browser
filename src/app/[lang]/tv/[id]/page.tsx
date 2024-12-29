@@ -81,6 +81,7 @@ const MoviePage = async ({ params }: Props) => {
             </section>
             {/* Right cards */}
             <section className="flex flex-col gap-2 md:w-1/4">
+              {/* TODO: Optimize for Shows page */}
               <DetailsCard
                 movie={movie}
                 releaseDate={releaseDate}
