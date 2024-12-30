@@ -3,14 +3,14 @@ import dynamic from 'next/dynamic';
 import ListLoading from '../../loading';
 import { getPopularTvShows } from '@/app/[lang]/lib/tmdb';
 import PaginationView from '@/app/[lang]/components/ContentList/PagintationView';
-import { Locale } from '@/i18n-config';
+import type { Locale } from '@/i18n-config';
 import { getDictionary } from '@/get-dictionary';
 
 const ContentList = dynamic(
   () => import('../../components/ContentList/ContentList'),
   {
     loading: () => <ListLoading />,
-  }
+  },
 );
 
 let content: Content[];

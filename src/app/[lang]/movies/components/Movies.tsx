@@ -3,14 +3,14 @@ import dynamic from 'next/dynamic';
 import ListLoading from '../../loading';
 import { getPopularMovies } from '@/app/[lang]/lib/tmdb';
 import PaginationView from '@/app/[lang]/components/ContentList/PagintationView';
-import { Locale } from '@/i18n-config';
 import { getDictionary } from '@/get-dictionary';
+import type { Locale } from '@/i18n-config';
 
 const ContentList = dynamic(
   () => import('../../components/ContentList/ContentList'),
   {
     loading: () => <ListLoading />,
-  }
+  },
 );
 
 export default async function Movies({

@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { Filter, Delete } from '@mynaui/icons-react';
-import { type getDictionary } from '@/get-dictionary';
+import type { getDictionary } from '@/get-dictionary';
 
 const Filters = ({
   setInput,

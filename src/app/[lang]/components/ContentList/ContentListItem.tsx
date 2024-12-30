@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/card';
 import Link from 'next/link';
 import EpisodePill from './EpisodePill';
-import { getDictionary } from '@/get-dictionary';
+import type { getDictionary } from '@/get-dictionary';
 import PosterImage from './PosterImage';
 
 export default async function ContentListItem({
@@ -18,7 +18,8 @@ export default async function ContentListItem({
   dictionary: Awaited<ReturnType<typeof getDictionary>>;
 }) {
   const isMovie: boolean = !!content.title;
-  const title = isMovie ? content.title : content.name;
+  const title =
+    content.title ?? content.name ?? dictionary.content_details.no_title;
   const getOverview = () => {
     if (content.overview) {
       return content.overview;
@@ -40,7 +41,7 @@ export default async function ContentListItem({
       >
         <div className="w-full aspect-[4/5] relative">
           {content.poster_path || content.backdrop_path ? (
-            <PosterImage content={content} title={title!} />
+            <PosterImage content={content} title={title} />
           ) : (
             <div className="w-full h-full flex justify-center items-center bg-background rounded-t-lg">
               <p className="text-center text-muted-foreground">

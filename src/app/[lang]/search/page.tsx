@@ -21,8 +21,8 @@ const SearchPage = async ({ params, searchParams }: Props) => {
   const { page } = await searchParams;
   console.log('query:', query);
   const data: ApiResponse = query
-    ? await searchMulti(query, parseInt(page || '1', 10), lang)
-    : await getTrendingTvShows(parseInt(page || '1', 10), lang);
+    ? await searchMulti(query, Number.parseInt(page || '1', 10), lang)
+    : await getTrendingTvShows(Number.parseInt(page || '1', 10), lang);
 
   if (data.results.length > 0) {
     content = data.results;

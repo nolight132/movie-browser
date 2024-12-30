@@ -12,39 +12,65 @@ import OverviewExpandable from './components/OverviewExpandable';
 const MoviePage = async ({ params }: Props) => {
   const { id, lang } = await params;
   const dictionary = await getDictionary(lang);
-  const movie: Content = await getMovieDetails(parseInt(id!), lang);
+
+  if (!id) {
+    return null;
+  }
+
+  const movie: Content = await getMovieDetails(Number.parseInt(id), lang);
+
+  if (!movie) {
+    return null;
+  }
+
   const isMovie: boolean = !!movie.title;
-  const title = isMovie ? movie.title : movie.name;
-  const originalTitle = isMovie ? movie.original_title : movie.original_name;
+  const title =
+    movie.title ?? movie.name ?? dictionary.content_details.no_title;
+
+  const originalTitle = movie.original_title ?? movie.original_name;
+
   const getOverview = () => {
     if (movie.overview) {
       return movie.overview;
     }
-    if (isMovie) {
-      return dictionary.movies.no_description;
-    }
-    return dictionary.shows.no_description;
+    return isMovie
+      ? dictionary.movies.no_description
+      : dictionary.shows.no_description;
   };
-  const releaseDate = isMovie
-    ? movie.release_date!.replace(/-/g, '.').split('.').reverse().join('.')
-    : movie.first_air_date!.replace(/-/g, '.').split('.').reverse().join('.');
 
-  const runtime = movie.runtime;
-  const hours = Math.floor(runtime! / 60);
-  const minutes = runtime! % 60;
+  const releaseDate =
+    (isMovie ? movie.release_date : movie.first_air_date) ?? '';
+  const formattedReleaseDate = releaseDate
+    .replace(/-/g, '.')
+    .split('.')
+    .reverse()
+    .join('.');
+
+  const runtime = movie.runtime ?? 0;
+  const hours = Math.floor(runtime / 60);
+  const minutes = runtime % 60;
   const duration = `${hours}${dictionary.ui.time.hours_short} ${minutes}${dictionary.ui.time.minutes_short}`;
+
   const languageCode = movie.original_language;
-  const movieLanguage = new Intl.DisplayNames(lang, {
-    type: 'language',
-  }).of(languageCode);
+  let movieLanguage =
+    languageCode &&
+    new Intl.DisplayNames(lang, { type: 'language' }).of(languageCode);
+
+  if (!movieLanguage) {
+    movieLanguage = dictionary.content_details.unknown_language;
+  }
+
   const numberStyle = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-  const budget = numberStyle.format(movie.budget!);
-  const revenue = numberStyle.format(movie.revenue!);
+
+  const budget =
+    movie.budget !== undefined ? numberStyle.format(movie.budget) : 'N/A';
+  const revenue =
+    movie.revenue !== undefined ? numberStyle.format(movie.revenue) : 'N/A';
 
   return (
     <>
@@ -62,7 +88,7 @@ const MoviePage = async ({ params }: Props) => {
             {/* Left cards */}
             <section className="w-full md:w-1/3">
               <PosterCard
-                title={title!}
+                title={title}
                 content={movie}
                 dictionary={dictionary}
               />
@@ -83,9 +109,9 @@ const MoviePage = async ({ params }: Props) => {
             <section className="flex flex-col gap-2 md:w-1/4">
               <DetailsCard
                 movie={movie}
-                releaseDate={releaseDate}
+                releaseDate={formattedReleaseDate}
                 duration={duration}
-                movieLanguage={movieLanguage!}
+                movieLanguage={movieLanguage}
                 dictionary={dictionary}
                 budget={budget}
                 revenue={revenue}

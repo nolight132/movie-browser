@@ -24,7 +24,7 @@ const PosterImage = ({
             ? `https://image.tmdb.org/t/p/w500/${content.poster_path}`
             : `https://image.tmdb.org/t/p/w500/${content.backdrop_path}`
         }
-        alt={title!}
+        alt={title}
         width={500}
         height={280}
         onLoad={handleImageLoaded}

@@ -12,7 +12,7 @@ const ShowsPage = async ({ params, searchParams }: Props) => {
   const { lang } = resolvedParams;
   const dictionary = await getDictionary(lang);
 
-  const pageInt = parseInt(page || '1', 10);
+  const pageInt = Number.parseInt(page || '1', 10);
   return (
     <PageWrapper>
       <div>

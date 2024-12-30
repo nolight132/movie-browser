@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import Filters from './Filters';
-import { type getDictionary } from '@/get-dictionary';
+import type { getDictionary } from '@/get-dictionary';
 
 const SearchInput = ({
   query,

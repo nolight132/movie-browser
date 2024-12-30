@@ -1,3 +1,4 @@
+import { getMovieDetails, getTvShowDetails } from '@/app/[lang]/lib/tmdb';
 import { getDictionary } from '@/get-dictionary';
 import { Suspense } from 'react';
 import ListLoading from '../../loading'; // Your loading skeleton
@@ -7,48 +8,67 @@ import DetailsCard from './components/DetailsCard';
 import PosterCard from '../../components/Shared/PosterCard';
 import ContentBanner from '../../components/Shared/ContentBanner';
 import OverviewExpandable from './components/OverviewExpandable';
-import { getTvShowDetails } from '../../lib/tmdb';
 
-const MoviePage = async ({ params }: Props) => {
+const ShowPage = async ({ params }: Props) => {
   const { id, lang } = await params;
   const dictionary = await getDictionary(lang);
-  const movie: Content = await getTvShowDetails(parseInt(id!), lang);
-  const isMovie: boolean = !!movie.title;
-  const title = isMovie ? movie.title : movie.name;
-  const originalTitle = isMovie ? movie.original_title : movie.original_name;
+
+  if (!id) {
+    return null;
+  }
+
+  const show: Content = await getTvShowDetails(Number.parseInt(id), lang);
+
+  if (!show) {
+    return null;
+  }
+  const title = show.title ?? show.name ?? dictionary.content_details.no_title;
+
+  const originalTitle = show.original_title ?? show.original_name;
+
   const getOverview = () => {
-    if (movie.overview) {
-      return movie.overview;
-    }
-    if (isMovie) {
-      return dictionary.movies.no_description;
+    if (show.overview) {
+      return show.overview;
     }
     return dictionary.shows.no_description;
   };
-  const releaseDate = isMovie
-    ? movie.release_date!.replace(/-/g, '.').split('.').reverse().join('.')
-    : movie.first_air_date!.replace(/-/g, '.').split('.').reverse().join('.');
 
-  const runtime = movie.runtime;
-  const hours = Math.floor(runtime! / 60);
-  const minutes = runtime! % 60;
+  const releaseDate = show.first_air_date ?? '';
+  const formattedReleaseDate = releaseDate
+    .replace(/-/g, '.')
+    .split('.')
+    .reverse()
+    .join('.');
+
+  const runtime = show.runtime ?? 0;
+  const hours = Math.floor(runtime / 60);
+  const minutes = runtime % 60;
   const duration = `${hours}${dictionary.ui.time.hours_short} ${minutes}${dictionary.ui.time.minutes_short}`;
-  const languageCode = movie.original_language;
-  const movieLanguage = new Intl.DisplayNames(lang, {
-    type: 'language',
-  }).of(languageCode);
+
+  const languageCode = show.original_language;
+  let movieLanguage =
+    languageCode &&
+    new Intl.DisplayNames(lang, { type: 'language' }).of(languageCode);
+
+  if (!movieLanguage) {
+    movieLanguage = dictionary.content_details.unknown_language;
+  }
+
   const numberStyle = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-  const budget = numberStyle.format(movie.budget!);
-  const revenue = numberStyle.format(movie.revenue!);
+
+  const budget =
+    show.budget !== undefined ? numberStyle.format(show.budget) : 'N/A';
+  const revenue =
+    show.revenue !== undefined ? numberStyle.format(show.revenue) : 'N/A';
 
   return (
     <>
-      <ContentBanner content={movie} />
+      <ContentBanner content={show} />
       <PageWrapper>
         <div className="top-80 w-full space-y-8 mt-24">
           <div>
@@ -62,8 +82,8 @@ const MoviePage = async ({ params }: Props) => {
             {/* Left cards */}
             <section className="w-full md:w-1/3">
               <PosterCard
-                title={title!}
-                content={movie}
+                title={title}
+                content={show}
                 dictionary={dictionary}
               />
             </section>
@@ -81,12 +101,12 @@ const MoviePage = async ({ params }: Props) => {
             </section>
             {/* Right cards */}
             <section className="flex flex-col gap-2 md:w-1/4">
-              {/* TODO: Optimize for Shows page */}
+              {/* TODO Make DetailsCard show-specific */}
               <DetailsCard
-                movie={movie}
-                releaseDate={releaseDate}
+                movie={show}
+                releaseDate={formattedReleaseDate}
                 duration={duration}
-                movieLanguage={movieLanguage!}
+                movieLanguage={movieLanguage}
                 dictionary={dictionary}
                 budget={budget}
                 revenue={revenue}
@@ -99,10 +119,10 @@ const MoviePage = async ({ params }: Props) => {
   );
 };
 
-export default function SuspenseMoviePage(props: Props) {
+export default function SuspenseShowPage(props: Props) {
   return (
     <Suspense fallback={<ListLoading className="h-screen" />}>
-      <MoviePage {...props} />
+      <ShowPage {...props} />
     </Suspense>
   );
 }

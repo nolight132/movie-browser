@@ -11,7 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { type getDictionary } from '@/get-dictionary';
+import type { getDictionary } from '@/get-dictionary';
 
 const ModeToggle = ({
   dictionary,

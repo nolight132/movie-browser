@@ -21,7 +21,7 @@ const PaginationView = ({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const currentPage = parseInt(searchParams.get('page') || '1', 10);
+  const currentPage = Number.parseInt(searchParams.get('page') || '1', 10);
 
   if (totalPages > 500) {
     totalPages = 500;

@@ -24,7 +24,7 @@ export default function ContentListItemSkeleton() {
                 style={{ color: '#FFD700' }}
                 className="w-4 h-4 mr-1"
               />
-              <Skeleton className="w-5 h-3 rounded-full"></Skeleton>
+              <Skeleton className="w-5 h-3 rounded-full" />
             </div>
           </div>
 

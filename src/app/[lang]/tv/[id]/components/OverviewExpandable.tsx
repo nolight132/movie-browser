@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardTitle } from '@/components/ui/card';
-import { type getDictionary } from '@/get-dictionary';
+import type { getDictionary } from '@/get-dictionary';
 import { ChevronDoubleDown, ChevronDoubleUp } from '@mynaui/icons-react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -22,7 +22,7 @@ const OverviewExpandable = ({
       const { scrollHeight, clientHeight } = textRef.current;
       setShouldExpand(scrollHeight > clientHeight);
     }
-  }, [overview]);
+  });
 
   return (
     <Card className="p-6 space-y-3">
@@ -43,7 +43,7 @@ const OverviewExpandable = ({
             className={`h-32 w-full left-0 bottom-0 absolute bg-gradient-to-b from-transparent to-background transition-opacity duration-200 ease-linear pointer-events-none ${
               shouldExpand && !expanded ? 'opacity-100' : 'opacity-0'
             }`}
-          ></div>
+          />
         </div>
       </div>
       {shouldExpand && (

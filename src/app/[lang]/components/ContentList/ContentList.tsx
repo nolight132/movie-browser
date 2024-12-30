@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import ContentListItemSkeleton from '../Skeletons/ContentListItemSkeleton';
-import { type getDictionary } from '@/get-dictionary';
+import type { getDictionary } from '@/get-dictionary';
 
 const ContentListItem = dynamic(() => import('./ContentListItem'), {
   loading: () => <ContentListItemSkeleton />,

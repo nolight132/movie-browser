@@ -11,7 +11,7 @@ import {
   SelectTrigger,
 } from '@/components/ui/select';
 import { LanguagesIcon } from 'lucide-react';
-import { type getDictionary } from '@/get-dictionary';
+import type { getDictionary } from '@/get-dictionary';
 
 const getLocale = (): string => {
   const currentPath = window.location.pathname;

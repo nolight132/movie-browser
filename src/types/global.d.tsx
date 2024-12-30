@@ -1,4 +1,4 @@
-import { Locale } from '@/i18n-config';
+import type { Locale } from '@/i18n-config';
 
 declare global {
   interface ApiResponse {
@@ -80,5 +80,3 @@ declare global {
     }>;
   };
 }
-
-export {};

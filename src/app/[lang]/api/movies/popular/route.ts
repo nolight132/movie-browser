@@ -1,5 +1,5 @@
 import { getPopularMovies } from '@/app/[lang]/lib/tmdb';
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 // Handle GET requests
 export async function GET(req: NextRequest) {
@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
     page = '1';
   }
   try {
-    const movies = (await getPopularMovies(parseInt(page), 'en')).results;
+    const movies = (await getPopularMovies(Number.parseInt(page), 'en')).results;
     return NextResponse.json(movies);
   } catch (error) {
     console.error('Error fetching movies:', error);

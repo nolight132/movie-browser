@@ -70,6 +70,7 @@
     "description": "bubebube"
   },
   "content_details": {
+    "no_title": "Brak tytułu",
     "genres": "Gatunki",
     "rating": "Ocena",
     "release_date": "Premiera",
@@ -78,6 +79,7 @@
     "overview": "Opis",
     "details": "Szczegóły",
     "original_language": "Język oryginalny",
+    "unknown_language": "Nieznany język",
     "original": "Oryginał",
     "status": "Status",
     "production_countries": "Kraje produkcji",

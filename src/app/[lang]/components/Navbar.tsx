@@ -13,7 +13,7 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import { usePathname } from 'next/navigation';
-import { type getDictionary } from '@/get-dictionary';
+import type { getDictionary } from '@/get-dictionary';
 import LanguageSwitcher from './LanguageSwitch';
 
 const CrossButton = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
@@ -103,7 +103,8 @@ const LinkListMobile = ({
           ? 'opacity-100 translate-y-0'
           : 'opacity-0 translate-y-4 pointer-events-none'
       }`}
-      onClick={toggleMenu}
+      onClick={() => {}}
+      onKeyDown={toggleMenu}
     >
       <li>
         <Link

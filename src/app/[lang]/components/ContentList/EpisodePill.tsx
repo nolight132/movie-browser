@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import EpisodePillSkeleton from '../Skeletons/EpisodePillSkeleton';
 import { Separator } from '@/components/ui/separator';
-import { type getDictionary } from '@/get-dictionary';
+import type { getDictionary } from '@/get-dictionary';
 
 export default function EpisodePill({
   dictionary,
@@ -47,11 +47,11 @@ export default function EpisodePill({
     <div className="absolute top-2 left-2 flex bg-background/90 rounded-full">
       <div className="p-2 h-5 rounded-full shadow-lg text-xs flex gap-2 items-center justify-center text-foreground/90 font-semibold">
         <div>
-          {seasons} {dictionary.shows.seasons.at(0)!.toUpperCase()}
+          {seasons} {dictionary.shows.seasons.substring(0, 1).toUpperCase()}
         </div>
         <Separator orientation="vertical" className="h-2 bg-foreground/90" />
         <div>
-          {episodes} {dictionary.shows.episodes.substring(0, 2)!.toUpperCase()}
+          {episodes} {dictionary.shows.episodes.substring(0, 2).toUpperCase()}
         </div>
       </div>
     </div>

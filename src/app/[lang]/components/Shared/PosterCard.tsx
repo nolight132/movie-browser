@@ -1,7 +1,7 @@
 'use client';
 
 import { Card } from '@/components/ui/card';
-import { type getDictionary } from '@/get-dictionary';
+import type { getDictionary } from '@/get-dictionary';
 import { Video } from '@mynaui/icons-react';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -23,8 +23,8 @@ const PosterCard = ({
   return (
     <Card className="p-2 pb-0 w-full h-full shadow-lg overflow-hidden">
       <Image
-        src={`https://image.tmdb.org/t/p/original${content.poster_path!}`}
-        alt={title!}
+        src={`https://image.tmdb.org/t/p/original${content.poster_path}`}
+        alt={title}
         priority={true}
         onLoad={handleImageLoad}
         width={3}

@@ -70,6 +70,7 @@
     "description": "bubebube"
   },
   "content_details": {
+    "no_title": "Нет названия",
     "genres": "Жанры",
     "rating": "Рейтинг",
     "release_date": "Дата выпуска",
@@ -78,6 +79,7 @@
     "overview": "Описание",
     "details": "Детали",
     "original_language": "Оригинальный язык",
+    "unknown_language": "Неизвестный язык",
     "original": "Оригинал",
     "status": "Статус",
     "production_countries": "Страны производства",

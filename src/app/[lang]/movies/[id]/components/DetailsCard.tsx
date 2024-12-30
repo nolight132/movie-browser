@@ -2,7 +2,7 @@
 
 import { Card, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { type getDictionary } from '@/get-dictionary';
+import type { getDictionary } from '@/get-dictionary';
 import { StarSolid } from '@mynaui/icons-react';
 import DetailsRow from './DetailsRow';
 
