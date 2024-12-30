@@ -1,7 +1,7 @@
 import { getMovieDetails } from '@/app/[lang]/lib/tmdb';
 import { getDictionary } from '@/get-dictionary';
 import { Suspense } from 'react';
-import ListLoading from '../../loading'; // Your loading skeleton
+import ListLoading from '../../loading';
 import { Card } from '@/components/ui/card';
 import PageWrapper from '../../components/PageWrapper';
 import DetailsCard from './components/DetailsCard';
@@ -12,61 +12,40 @@ import OverviewExpandable from './components/OverviewExpandable';
 const MoviePage = async ({ params }: Props) => {
   const { id, lang } = await params;
   const dictionary = await getDictionary(lang);
-
   if (!id) {
     return null;
   }
-
   const movie: Content = await getMovieDetails(Number.parseInt(id), lang);
-
   if (!movie) {
     return null;
   }
-
-  const isMovie: boolean = !!movie.title;
   const title =
     movie.title ?? movie.name ?? dictionary.content_details.no_title;
-
   const originalTitle = movie.original_title ?? movie.original_name;
-
-  const getOverview = () => {
-    if (movie.overview) {
-      return movie.overview;
-    }
-    return isMovie
-      ? dictionary.movies.no_description
-      : dictionary.shows.no_description;
-  };
-
-  const releaseDate =
-    (isMovie ? movie.release_date : movie.first_air_date) ?? '';
+  const overview = movie.overview ?? dictionary.movies.no_description;
+  const releaseDate = movie.release_date ?? '';
   const formattedReleaseDate = releaseDate
     .replace(/-/g, '.')
     .split('.')
     .reverse()
     .join('.');
-
   const runtime = movie.runtime ?? 0;
   const hours = Math.floor(runtime / 60);
   const minutes = runtime % 60;
   const duration = `${hours}${dictionary.ui.time.hours_short} ${minutes}${dictionary.ui.time.minutes_short}`;
-
   const languageCode = movie.original_language;
   let movieLanguage =
     languageCode &&
     new Intl.DisplayNames(lang, { type: 'language' }).of(languageCode);
-
   if (!movieLanguage) {
     movieLanguage = dictionary.content_details.unknown_language;
   }
-
   const numberStyle = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-
   const budget =
     movie.budget !== undefined ? numberStyle.format(movie.budget) : 'N/A';
   const revenue =
@@ -95,10 +74,7 @@ const MoviePage = async ({ params }: Props) => {
             </section>
             {/* Center cards */}
             <section className="space-y-3 max-md:flex max-md:flex-col max-md:flex-1 md:w-1/3 lg:w-1/2">
-              <OverviewExpandable
-                overview={getOverview()}
-                dictionary={dictionary}
-              />
+              <OverviewExpandable overview={overview} dictionary={dictionary} />
               <Card className="w-full p-6">
                 <h2 className="text-3xl font-semibold">
                   {dictionary.content_details.cast.title}

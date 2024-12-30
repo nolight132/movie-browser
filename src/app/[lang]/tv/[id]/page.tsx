@@ -1,7 +1,7 @@
 import { getMovieDetails, getTvShowDetails } from '@/app/[lang]/lib/tmdb';
 import { getDictionary } from '@/get-dictionary';
 import { Suspense } from 'react';
-import ListLoading from '../../loading'; // Your loading skeleton
+import ListLoading from '../../loading';
 import { Card } from '@/components/ui/card';
 import PageWrapper from '../../components/PageWrapper';
 import DetailsCard from './components/DetailsCard';
@@ -12,55 +12,39 @@ import OverviewExpandable from './components/OverviewExpandable';
 const ShowPage = async ({ params }: Props) => {
   const { id, lang } = await params;
   const dictionary = await getDictionary(lang);
-
   if (!id) {
     return null;
   }
-
   const show: Content = await getTvShowDetails(Number.parseInt(id), lang);
-
   if (!show) {
     return null;
   }
   const title = show.title ?? show.name ?? dictionary.content_details.no_title;
-
   const originalTitle = show.original_title ?? show.original_name;
-
-  const getOverview = () => {
-    if (show.overview) {
-      return show.overview;
-    }
-    return dictionary.shows.no_description;
-  };
-
+  const overview = show.overview ?? dictionary.shows.no_description;
   const releaseDate = show.first_air_date ?? '';
   const formattedReleaseDate = releaseDate
     .replace(/-/g, '.')
     .split('.')
     .reverse()
     .join('.');
-
   const runtime = show.runtime ?? 0;
   const hours = Math.floor(runtime / 60);
   const minutes = runtime % 60;
   const duration = `${hours}${dictionary.ui.time.hours_short} ${minutes}${dictionary.ui.time.minutes_short}`;
-
   const languageCode = show.original_language;
-  let movieLanguage =
+  let showLanguage =
     languageCode &&
     new Intl.DisplayNames(lang, { type: 'language' }).of(languageCode);
-
-  if (!movieLanguage) {
-    movieLanguage = dictionary.content_details.unknown_language;
+  if (!showLanguage) {
+    showLanguage = dictionary.content_details.unknown_language;
   }
-
   const numberStyle = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-
   const budget =
     show.budget !== undefined ? numberStyle.format(show.budget) : 'N/A';
   const revenue =
@@ -89,10 +73,7 @@ const ShowPage = async ({ params }: Props) => {
             </section>
             {/* Center cards */}
             <section className="space-y-3 max-md:flex max-md:flex-col max-md:flex-1 md:w-1/3 lg:w-1/2">
-              <OverviewExpandable
-                overview={getOverview()}
-                dictionary={dictionary}
-              />
+              <OverviewExpandable overview={overview} dictionary={dictionary} />
               <Card className="w-full p-6">
                 <h2 className="text-3xl font-semibold">
                   {dictionary.content_details.cast.title}
@@ -106,7 +87,7 @@ const ShowPage = async ({ params }: Props) => {
                 movie={show}
                 releaseDate={formattedReleaseDate}
                 duration={duration}
-                movieLanguage={movieLanguage}
+                movieLanguage={showLanguage}
                 dictionary={dictionary}
                 budget={budget}
                 revenue={revenue}
