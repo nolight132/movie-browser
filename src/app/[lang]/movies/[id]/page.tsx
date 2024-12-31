@@ -2,12 +2,12 @@ import { getMovieDetails } from '@/app/[lang]/lib/tmdb';
 import { getDictionary } from '@/get-dictionary';
 import { Suspense } from 'react';
 import ListLoading from '../../loading';
-import { Card } from '@/components/ui/card';
 import PageWrapper from '../../components/PageWrapper';
 import DetailsCard from './components/DetailsCard';
 import PosterCard from '../../components/Shared/PosterCard';
 import ContentBanner from '../../components/Shared/ContentBanner';
 import OverviewExpandable from './components/OverviewExpandable';
+import CastExpandable from './components/CastExpandable';
 
 const MoviePage = async ({ params }: Props) => {
   const { id, lang } = await params;
@@ -34,12 +34,9 @@ const MoviePage = async ({ params }: Props) => {
   const minutes = runtime % 60;
   const duration = `${hours}${dictionary.ui.time.hours_short} ${minutes}${dictionary.ui.time.minutes_short}`;
   const languageCode = movie.original_language;
-  let movieLanguage =
-    languageCode &&
-    new Intl.DisplayNames(lang, { type: 'language' }).of(languageCode);
-  if (!movieLanguage) {
-    movieLanguage = dictionary.content_details.unknown_language;
-  }
+  const movieLanguage =
+    new Intl.DisplayNames(lang, { type: 'language' }).of(languageCode) ??
+    dictionary.content_details.unknown_language;
   const numberStyle = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -75,11 +72,7 @@ const MoviePage = async ({ params }: Props) => {
             {/* Center cards */}
             <section className="space-y-3 max-md:flex max-md:flex-col max-md:flex-1 md:w-1/3 lg:w-1/2">
               <OverviewExpandable overview={overview} dictionary={dictionary} />
-              <Card className="w-full p-6">
-                <h2 className="text-3xl font-semibold">
-                  {dictionary.content_details.cast.title}
-                </h2>
-              </Card>
+              <CastExpandable dictionary={dictionary} movie={movie} />
             </section>
             {/* Right cards */}
             <section className="flex flex-col gap-2 md:w-1/4">

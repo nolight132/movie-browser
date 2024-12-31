@@ -33,12 +33,9 @@ const ShowPage = async ({ params }: Props) => {
   const minutes = runtime % 60;
   const duration = `${hours}${dictionary.ui.time.hours_short} ${minutes}${dictionary.ui.time.minutes_short}`;
   const languageCode = show.original_language;
-  let showLanguage =
-    languageCode &&
-    new Intl.DisplayNames(lang, { type: 'language' }).of(languageCode);
-  if (!showLanguage) {
-    showLanguage = dictionary.content_details.unknown_language;
-  }
+  const showLanguage =
+    new Intl.DisplayNames(lang, { type: 'language' }).of(languageCode) ??
+    dictionary.content_details.unknown_language;
   const numberStyle = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',

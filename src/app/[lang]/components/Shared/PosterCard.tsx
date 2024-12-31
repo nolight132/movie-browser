@@ -21,7 +21,7 @@ const PosterCard = ({
     setImageLoaded(true);
   };
   return (
-    <Card className="p-2 pb-0 w-full h-full shadow-lg overflow-hidden">
+    <Card className="p-2 pb-0 w-full shadow-lg overflow-hidden">
       <Image
         src={`https://image.tmdb.org/t/p/original${content.poster_path}`}
         alt={title}
