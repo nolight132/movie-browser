@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import Filters from './Filters';
 import type { getDictionary } from '@/get-dictionary';
@@ -16,6 +16,7 @@ const SearchInput = ({
   const [input, setInput] = useState(query);
   const [debouncedInput, setDebouncedInput] = useState(query);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -26,12 +27,18 @@ const SearchInput = ({
   }, [input]);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+
     if (debouncedInput) {
-      router.push(`?query=${encodeURIComponent(debouncedInput)}`);
+      params.set('query', encodeURIComponent(debouncedInput));
     } else {
-      router.push('');
+      params.delete('query');
     }
-  }, [debouncedInput, router]);
+
+    const newUrl = params.toString() ? `${pathname}?${params.toString()}` : pathname;
+
+    router.push(newUrl);
+  }, [debouncedInput, router, pathname]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);

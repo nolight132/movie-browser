@@ -15,7 +15,6 @@ const Filters = ({
   const pathname = usePathname();
 
   const clear = () => {
-    router.replace(pathname);
     setInput('');
   };
 
