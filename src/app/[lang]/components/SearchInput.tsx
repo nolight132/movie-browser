@@ -11,7 +11,7 @@ const SearchInput = ({
   dictionary,
 }: {
   query: string;
-  dictionary: Awaited<ReturnType<typeof getDictionary>>['search'];
+  dictionary: Awaited<ReturnType<typeof getDictionary>>;
 }) => {
   const [input, setInput] = useState(query);
   const [debouncedInput, setDebouncedInput] = useState(query);

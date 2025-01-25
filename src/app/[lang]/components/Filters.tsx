@@ -9,7 +9,7 @@ const Filters = ({
   dictionary,
 }: {
   setInput: (input: string) => void;
-  dictionary: Awaited<ReturnType<typeof getDictionary>>['search'];
+  dictionary: Awaited<ReturnType<typeof getDictionary>>;
 }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -22,7 +22,7 @@ const Filters = ({
     <div className="flex gap-3">
       <Button variant="outline" className="sm:flex items-center hidden">
         <Filter className="mr-2" />
-        {dictionary.filters.filters_button_label}
+        {dictionary.search.filters.filters_button_label}
       </Button>
       <Button
         variant={'default'}
@@ -30,7 +30,7 @@ const Filters = ({
         className="sm:flex items-center hidden"
       >
         <Delete className="mr-2" />
-        {dictionary.filters.clear_button_label}
+        {dictionary.search.filters.clear_button_label}
       </Button>
 
       <Button variant="outline" className="sm:hidden">

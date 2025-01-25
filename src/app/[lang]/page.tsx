@@ -12,7 +12,6 @@ let content: Content[] = [];
 const SearchPage = async ({ params, searchParams }: Props) => {
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
-  const dictionarySearch = dictionary.search;
 
   let { query } = (await searchParams) || '';
   if (!query) {
@@ -31,10 +30,10 @@ const SearchPage = async ({ params, searchParams }: Props) => {
     <PageWrapper>
       <h1 className="text-4xl font-bold mt-10">
         {query
-          ? `${dictionarySearch.title}: “${query}”`
-          : `${dictionarySearch.title}...`}
+          ? `${dictionary.search.title}: “${query}”`
+          : `${dictionary.search.title}...`}
       </h1>
-      <SearchInput query={query} dictionary={dictionarySearch} />
+      <SearchInput query={query} dictionary={dictionary.search} />
       <ContentList content={content} dictionary={dictionary} />
       <PaginationView totalPages={data.total_pages} />
     </PageWrapper>
