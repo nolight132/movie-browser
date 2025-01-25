@@ -51,7 +51,7 @@ const SearchInput = ({
         type="text"
         value={input}
         onChange={handleInputChange}
-        placeholder={dictionary.placeholder}
+        placeholder={dictionary.search.placeholder}
       />
       <Filters setInput={setInput} dictionary={dictionary} />
     </div>

@@ -14,8 +14,11 @@ const SearchPage = async ({ params, searchParams }: Props) => {
   const dictionary = await getDictionary(lang);
 
   let { query } = (await searchParams) || '';
+  console.log(query);
   if (!query) {
     query = '';
+  } else {
+    query = decodeURIComponent(query);
   }
   const { page } = await searchParams;
   const data: ApiResponse = query
@@ -33,7 +36,7 @@ const SearchPage = async ({ params, searchParams }: Props) => {
           ? `${dictionary.search.title}: “${query}”`
           : `${dictionary.search.title}...`}
       </h1>
-      <SearchInput query={query} dictionary={dictionary.search} />
+      <SearchInput query={query} dictionary={dictionary} />
       <ContentList content={content} dictionary={dictionary} />
       <PaginationView totalPages={data.total_pages} />
     </PageWrapper>
