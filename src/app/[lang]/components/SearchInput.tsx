@@ -27,9 +27,9 @@ const SearchInput = ({
 
   useEffect(() => {
     if (debouncedInput) {
-      router.push(`search?query=${encodeURIComponent(debouncedInput)}`);
+      router.push(`?query=${encodeURIComponent(debouncedInput)}`);
     } else {
-      router.push('search');
+      router.push('');
     }
   }, [debouncedInput, router]);
 

@@ -1,6 +1,6 @@
 'use client';
 import { Button } from '@/components/ui/button';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { Filter, Delete } from '@mynaui/icons-react';
 import type { getDictionary } from '@/get-dictionary';
 
@@ -12,9 +12,10 @@ const Filters = ({
   dictionary: Awaited<ReturnType<typeof getDictionary>>['search'];
 }) => {
   const router = useRouter();
+  const pathname = usePathname();
 
   const clear = () => {
-    router.push('search');
+    router.replace(pathname);
     setInput('');
   };
 
